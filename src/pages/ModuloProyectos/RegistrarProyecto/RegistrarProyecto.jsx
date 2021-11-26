@@ -1,10 +1,14 @@
 import React from 'react'
-
+import Nav from 'components/Nav';
+import 'styles/nav.css';
 const RegistrarProyecto = () => {
   return (
-    <div>
-      ESTUDIANTE REGISTRAR PROYECTO
+    <>
+    <div class="divNav">
+      <Nav titulo="Pagina Inicio" />
     </div>
+      ESTUDIANTE REGISTRAR PROYECTO
+    </>
   )
 }
 
