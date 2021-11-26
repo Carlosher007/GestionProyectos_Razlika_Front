@@ -28,6 +28,7 @@ import {
 import EditarUsuarios from 'pages/Pruebas/EditarUsuarios';
 import IndexUsuariosPrueba from 'pages/Pruebas/IndexUsuariosPrueba';
 import 'styles/tabla.css';
+import Cards from 'pages/Pruebas/Componentes/Cards';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
@@ -78,6 +79,7 @@ function App() {
             <Route path="/pruebas" element={<PrivateLayout2 />}>
               <Route path="" element={<IndexUsuariosPrueba />} />
               <Route path='editar/:_id' element={<EditarUsuarios />} />
+              <Route path='cartas' element={<Cards />} />
             </Route>
           </Routes>
         </BrowserRouter>

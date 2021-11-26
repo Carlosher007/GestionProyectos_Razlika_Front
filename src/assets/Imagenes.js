@@ -11,6 +11,7 @@ import barras from './img/barras.svg';
 import imagenLogin1 from './img/imagenLogin1.jpg';
 import imagenLogin2 from './img/imagenLogin2.jpg';
 import soluWeb from './img/soluWeb.png';
+import coding from './img/coding.png';
 
 import help from './icons/help.png'
 import inbox from './icons/inbox.png';
@@ -83,31 +84,35 @@ export default [
     img: imagenLogin2,
   },
   {
-    // 13
+    // 14
     img: soluWeb,
   },
   {
-    // 14
+    // 15
     img: help,
   },
   {
-    // 15
+    // 16
     img: inbox,
   },
   {
-    // 16
+    // 17
     img: logout,
   },
   {
-    // 17
+    // 18
     img: person,
   },
   {
-    // 18
+    // 19
     img: profile,
   },
   {
-    // 19
+    // 20
     img: settings,
+  },
+  {
+    // 21
+    img: coding,
   },
 ];
