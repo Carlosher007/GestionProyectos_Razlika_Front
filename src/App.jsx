@@ -46,6 +46,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SingUp />} />
             <Route path="/espera" element={<InicioEspera />} />
+
             <Route path="/" element={<PrivateLayout2 />}>
               <Route path="inicio" element={<InicioProyecto />} />
               {/* <Route path="miperfil" element={<MiPerfil />} /> */}

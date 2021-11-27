@@ -19,7 +19,7 @@ import logout from './icons/logout.png';
 import person from './icons/person.jpg';
 import profile from './icons/profile.png';
 import settings from './icons/settings.png';
-
+import nuevaImagen from './icons/nuevaImagen.png'
 
 
 
@@ -114,5 +114,9 @@ export default [
   {
     // 21
     img: coding,
+  },
+  {
+    // 22
+    img: nuevaImagen,
   },
 ];

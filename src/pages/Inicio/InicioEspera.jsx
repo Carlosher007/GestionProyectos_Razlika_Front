@@ -2,6 +2,9 @@ import React from 'react'
 import Nav from 'components/Nav';
 import 'styles/nav.css';
 
+
+// UN NAV DONDE TE DIGA IR A LOGIN
+// 
 const InicioEspera = () => {
   return (
     <>

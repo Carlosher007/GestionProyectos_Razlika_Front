@@ -7,7 +7,9 @@ const ESTActualizarProyecto = () => {
       <div class="divNav">
         <Nav titulo="Pagina Inicio" />
       </div>
+      <div>
       Estudiante ACTUALIZAR PROYECTO
+      </div>
     </>
   )
 }

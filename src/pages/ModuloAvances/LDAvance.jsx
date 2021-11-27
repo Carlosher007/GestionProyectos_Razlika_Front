@@ -5,7 +5,7 @@ const LDAvance = () => {
   return (
     <>
     <div class="divNav">
-      <Nav titulo="Pagina Inicio" />
+      <Nav titulo="Avances" />
     </div>
     <div>
       AVANCE PARA UN LIDER
