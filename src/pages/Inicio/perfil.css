@@ -1,0 +1,40 @@
+.body {
+  background-color: #525357;
+  min-height: 100vh;
+  width: 100%;
+  padding: auto;
+}
+.imagen{
+    padding-top: 2%;
+}
+.nombre{
+    color: whitesmoke;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: xx-large;
+}
+.datosUsuario{
+    background-color: #2b2c2bc2;
+    padding: 2%;
+    overflow: hidden;
+    padding-left: 38%;
+}
+.etiquetas{
+    background-color: #525357;
+    border-radius: 5%;
+    padding: 2%;
+    color: whitesmoke;
+    font-size: x-large;
+    float: left;
+}
+.datos{
+    color: whitesmoke;
+    font-size: x-large;
+    float: left;
+    padding-left: 10%;
+    padding: 2%
+}
+.boton{
+    padding: 1.5%;
+    background-color: #2b2c2bc2;
+}
