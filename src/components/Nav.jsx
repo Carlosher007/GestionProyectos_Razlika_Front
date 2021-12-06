@@ -1,5 +1,7 @@
 import '../styles/nav.css';
 import { NavLink } from 'react-router-dom';
+import { useAuth } from 'context/authContext';
+import PrivateComponent from './PrivateComponent';
 
 import {
   Flecha,
@@ -17,6 +19,7 @@ import {
   ActualizarProyecto,
   RegistrarProyecto,
   VerProyectos,
+  Logouti,
 } from './Iconos.js';
 
 // import { ReactComponent as PlusIcon } from '../icons/plus.svg';
@@ -39,7 +42,7 @@ function Nav(props) {
         <p className="title">{props.titulo}</p>
       </div>
       <div>
-        <NavLink to="/inicio">
+        <NavLink to="/">
           <NavItem icon={<Inicio />} />
         </NavLink>
       </div>
@@ -50,9 +53,10 @@ function Nav(props) {
         </NavItem>
       </div>
       {/* </div> */}
-      {/* <NavItem icon={<CaretIcon />}>
-        <DropdownMenu></DropdownMenu>
-      </NavItem> */}
+
+      <div>
+        <Logout />
+      </div>
     </Navbar>
   );
 }
@@ -134,9 +138,12 @@ function DropdownMenu() {
           >
             Modulo Proyectos
           </DropdownItem>
-          <NavLink to="/avances">
-            <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
-          </NavLink>
+          {/* SUPONGAMOS QUE QUEREMOS QUE ESTE SOLO APAREZCA PARA LIDER */}
+          <PrivateComponent roleList={['ADMINISTRADOR']}>
+            <NavLink to="/avances">
+              <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
+            </NavLink>
+          </PrivateComponent>
           <NavLink to="/incripciones">
             <DropdownItem leftIcon={<Inscripciones />}>
               Inscripciones
@@ -217,3 +224,18 @@ function DropdownMenu() {
 }
 
 export default Nav;
+
+const Logout = () => {
+  const { setToken } = useAuth();
+  const deleteToken = () => {
+    console.log('eliminar token');
+    setToken(null);
+  };
+  return (
+    // <li>
+    <NavLink onClick={() => deleteToken()} to="/auth/login">
+      <NavItem icon={<Logouti />}></NavItem>
+    </NavLink>
+    // </li>
+  );
+};

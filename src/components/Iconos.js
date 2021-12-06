@@ -13,6 +13,7 @@ import { BsNewspaper as IndexProyectos } from 'react-icons/bs';
 import { BsLightningCharge as ActualizarProyecto } from 'react-icons/bs';
 import { BsJournalArrowUp as RegistrarProyecto } from 'react-icons/bs';
 import { BsChatDots as VerProyectos } from 'react-icons/bs';
+import { FcImport as Logouti } from 'react-icons/fc';
 
 
-export {Inicio,Menu,User,GestionUsuarios,Flecha,GestionProyectos,Avances,Inscripciones,IndexUsuarios,Pencil,EstadoUser,IndexProyectos, ActualizarProyecto,RegistrarProyecto,VerProyectos}
+export {Inicio,Menu,User,GestionUsuarios,Flecha,GestionProyectos,Avances,Inscripciones,IndexUsuarios,Pencil,EstadoUser,IndexProyectos, ActualizarProyecto,RegistrarProyecto,VerProyectos,Logouti}
