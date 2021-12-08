@@ -33,8 +33,8 @@ const LOGIN = gql`
       succes
       token
       errors {
-        message
         path
+        message
       }
     }
   }
