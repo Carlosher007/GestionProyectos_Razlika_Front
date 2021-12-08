@@ -31,6 +31,7 @@ import IndexProyectos from 'pages/ModuloProyectos/IndexProyectos';
 import IndexUsuarios from 'pages/ModuloUsuarios/IndexUsuarios';
 import EstadoUsuarios from 'pages/ModuloUsuarios/EstadoUsuarios/EstadoUsuarios';
 import GestionPerfil from 'pages/ModuloUsuarios/Perfil/GestionPerfil';
+import IndexProyectos2 from 'pages/proyectos/IndexProyectos2';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -102,6 +103,7 @@ function App() {
                   path="usuarios/editar/:_id"
                   element={<EditarUsuario />}
                 />
+                <Route path="proyecto" element={<IndexProyectos2 />} />
               </Route>
             </Routes>
           </BrowserRouter>
