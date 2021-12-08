@@ -221,3 +221,9 @@ a {
 .divContent{
   z-index: -1;
 }
+
+.contenidoPage{
+  background-color: #d6cad2;
+  height: 100%;
+  min-height: 100vh;
+}

@@ -5,9 +5,12 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
 import PrivateRoute from 'components/PrivateRoute';
-
 const IndexUsuarios2 = () => {
   const { data, error, loading } = useQuery(GET_USUARIOS);
+
+  // useEffect(()=>{
+  //   console.log("data",data)
+  // },[]);
 
   useEffect(() => {
     if (error) {
@@ -18,10 +21,10 @@ const IndexUsuarios2 = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <PrivateRoute roleList={['ADMINISTRADOR']}>
+    <PrivateRoute roleList={['LIDER']}>
       <div>
         Datos Usuarios:
-        <table className='tabla'>
+        <table className="tabla">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -34,9 +37,9 @@ const IndexUsuarios2 = () => {
             </tr>
           </thead>
           <tbody>
-            {data && data.Usuarios ? (
+            {data && data.UsuariosBasico.usuario ? (
               <>
-                {data.Usuarios.map((u) => {
+                {data.UsuariosBasico.usuario.map((u) => {
                   return (
                     <tr key={u._id}>
                       <td>{u.nombre}</td>
@@ -46,8 +49,8 @@ const IndexUsuarios2 = () => {
                       <td>{Enum_Rol[u.rol]}</td>
                       <td>{Enum_EstadoUsuario[u.estado]}</td>
                       <td>
-                        <Link to={`/usuarios/editar/${u._id}`}>
-                          <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
+                        <Link to={`/prueba/usuarios/editar/${u._id}`}>
+                          <i className="fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer" />
                         </Link>
                       </td>
                     </tr>

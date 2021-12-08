@@ -17,8 +17,12 @@ const REGISTRO = gql`
       rol: $rol
       password: $password
     ) {
+      succes
       token
-      error
+      errors {
+        path
+        message
+      }
     }
   }
 `;
@@ -26,8 +30,12 @@ const REGISTRO = gql`
 const LOGIN = gql`
   mutation Login($correo: String!, $password: String!) {
     login(correo: $correo, password: $password) {
+      succes
       token
-      error
+      errors {
+        message
+        path
+      }
     }
   }
 `;
@@ -35,8 +43,12 @@ const LOGIN = gql`
 const REFRESH_TOKEN = gql`
   mutation RefreshToken {
     refreshToken {
+      succes
       token
-      error
+      errors {
+        path
+        message
+      }
     }
   }
 `;

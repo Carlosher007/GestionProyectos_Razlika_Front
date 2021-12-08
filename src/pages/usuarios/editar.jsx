@@ -10,6 +10,11 @@ import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
 import { Enum_EstadoUsuario } from 'utils/enums';
 
+
+
+// DA ERROR PORQUE TINEES QUE EDITAR TOOOOOOODOOS
+
+
 const EditarUsuario = () => {
   const { form, formData, updateFormData } = useFormData(null);
   const { _id } = useParams();
@@ -22,17 +27,30 @@ const EditarUsuario = () => {
     variables: { _id },
   });
 
+  const {
+    data: queryData2,
+  } = useQuery(GET_USUARIO, {
+    variables: { _id },
+  });
 
-  const [editarUsuario, { data: mutationData, loading: mutationLoading, error: mutationError }] =
-    useMutation(EDITAR_USUARIO);
+  const [
+    editarUsuarioD,
+    { data: mutationData, loading: mutationLoading, error: mutationError },
+  ] = useMutation(EDITAR_USUARIO);
 
   const submitForm = (e) => {
     e.preventDefault();
-    delete formData.rol;
-    editarUsuario({
+    // delete formData.rol;
+    editarUsuarioD({
       variables: { _id, ...formData },
     });
   };
+
+
+useEffect(() => {
+        console.log(formData)
+}, [formData]);
+
 
   useEffect(() => {
     if (mutationData) {
@@ -53,57 +71,59 @@ const EditarUsuario = () => {
   if (queryLoading) return <div>Cargando....</div>;
 
   return (
-    <div className='flew flex-col w-full h-full items-center justify-center p-10'>
-      <Link to='/usuarios'>
-        <i className='fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900' />
+    <div className="flew flex-col w-full h-full items-center justify-center p-10">
+      <Link to="prueba/usuarios">
+        <i className="fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900" />
       </Link>
-      <h1 className='m-4 text-3xl text-gray-800 font-bold text-center'>Editar Usuario</h1>
+      <h1 className="m-4 text-3xl text-gray-800 font-bold text-center">
+        Editar Usuario
+      </h1>
       <form
         onSubmit={submitForm}
         onChange={updateFormData}
         ref={form}
-        className='flex flex-col items-center justify-center'
+        className="flex flex-col items-center justify-center"
       >
         <Input
-          label='Nombre de la persona:'
-          type='text'
-          name='nombre'
+          label="Nombre de la persona:"
+          type="text"
+          name="nombre"
           defaultValue={queryData.Usuario.nombre}
-          required={true}
+          // required={true}
         />
         <Input
-          label='Apellido de la persona:'
-          type='text'
-          name='apellido'
+          label="Apellido de la persona:"
+          type="text"
+          name="apellido"
           defaultValue={queryData.Usuario.apellido}
-          required={true}
+          // required={true}
         />
         <Input
-          label='Correo de la persona:'
-          type='email'
-          name='correo'
+          label="Correo de la persona:"
+          type="email"
+          name="correo"
           defaultValue={queryData.Usuario.correo}
-          required={true}
+          // required={true}
         />
         <Input
-          label='Identificación de la persona:'
-          type='text'
-          name='identificacion'
+          label="Identificación de la persona:"
+          type="text"
+          name="identificacion"
           defaultValue={queryData.Usuario.identificacion}
-          required={true}
+          // required={true}
         />
         <DropDown
-          label='Estado de la persona:'
-          name='estado'
+          label="Estado de la persona:"
+          name="estado"
           defaultValue={queryData.Usuario.estado}
-          required={true}
+          // required={true}
           options={Enum_EstadoUsuario}
         />
         <span>Rol del usuario: {queryData.Usuario.rol}</span>
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
           loading={mutationLoading}
-          text='Confirmar'
+          text="Confirmar"
         />
       </form>
     </div>
