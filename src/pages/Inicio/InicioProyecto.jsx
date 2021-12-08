@@ -9,7 +9,7 @@ const InicioProyecto = () => {
       <div class="divNav">
         <Nav titulo="Pagina Inicio"/>
       </div>
-      <div>Pagina Inicio</div>
+      <div class="contenidoPage">Pagina Inicio</div>
     </>
   );
 }
