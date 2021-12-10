@@ -33,21 +33,20 @@ const Login = () => {
   //     }
   // }, [mutationError,dataMutation]);
 
-
   useEffect(() => {
-    try{
-    if (dataMutation) {
-      // if (dataMutation.login) {
+    try {
+      if (dataMutation) {
+        // if (dataMutation.login) {
         if (dataMutation.login.token) {
           setToken(dataMutation.login.token);
           navigate('/');
           // toast.success('Usuario modificado correctamente');
         }
-      // }
+        // }
+      }
+    } catch (error) {
+      toast.warn('Datos erroneos');
     }
-  }catch(error){
-    toast.warn('Datos erroneos');
-  }
   }, [dataMutation, setToken, navigate]);
 
   return (

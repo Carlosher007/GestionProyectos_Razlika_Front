@@ -134,7 +134,7 @@ function DropdownMenu() {
           <DropdownItem
             leftIcon={<GestionProyectos />}
             rightIcon={<Flecha />}
-            goToMenu="animals"
+            goToMenu="proyecto"
           >
             Modulo Proyectos
           </DropdownItem>
@@ -144,7 +144,7 @@ function DropdownMenu() {
               <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
             </NavLink>
           </PrivateComponent>
-          <NavLink to="/incripciones">
+          <NavLink to="/inscripciones">
             <DropdownItem leftIcon={<Inscripciones />}>
               Inscripciones
             </DropdownItem>
@@ -164,19 +164,19 @@ function DropdownMenu() {
             <h2>Regresar</h2>
           </DropdownItem>
 
-          <NavLink to="/moduloUsuarios">
+          <NavLink to="/usuarios">
             <DropdownItem leftIcon={<IndexUsuarios />}>Inicio</DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloUsuarios/miPerfil">
+          <NavLink to="/miperfil">
             <DropdownItem leftIcon={<IndexUsuarios />}>Mi Perfil</DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloUsuarios/editarPerfil">
+          <NavLink to="/usuarios/gestionperfil">
             <DropdownItem leftIcon={<Pencil />}>Editar Perfil</DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloUsuariosc/estadoUsuarios">
+          <NavLink to="/usuarios/estado">
             <DropdownItem leftIcon={<EstadoUser />}>
               Estado Usuarios
             </DropdownItem>
@@ -185,7 +185,7 @@ function DropdownMenu() {
       </CSSTransition>
 
       <CSSTransition
-        in={activeMenu === 'animals'}
+        in={activeMenu === 'proyecto'}
         timeout={500}
         classNames="menu-secondary"
         unmountOnExit
@@ -196,23 +196,23 @@ function DropdownMenu() {
             <h2>Regresar</h2>
           </DropdownItem>
 
-          <NavLink to="/moduloProyectos">
+          <NavLink to="/proyecto">
             <DropdownItem leftIcon={<IndexProyectos />}>Inicio</DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloProyectos/actualizar">
+          <NavLink to="/proyecto/actualizar">
             <DropdownItem leftIcon={<ActualizarProyecto />}>
               Actualizar Proyectos
             </DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloProyectos/registrar">
+          <NavLink to="/proyecto/registrar">
             <DropdownItem leftIcon={<RegistrarProyecto />}>
               Registrar Proyectos
             </DropdownItem>
           </NavLink>
 
-          <NavLink to="/moduloProyectos/ver">
+          <NavLink to="/proyecto/ver">
             <DropdownItem leftIcon={<VerProyectos />}>
               Ver Proyectos
             </DropdownItem>

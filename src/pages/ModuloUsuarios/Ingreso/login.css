@@ -7,11 +7,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-section.active {
+.active {
   background: #3e3f39;
 }
 
-section {
+.sectionLogin {
   position: relative;
   min-height: 100vh;
   background: #557085;
@@ -21,6 +21,18 @@ section {
   padding: 20px;
   transition: 0.5s;
 }
+
+.sectionRegistro {
+  position: relative;
+  min-height: 100vh;
+  background: #70373e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: 0.5s;
+}
+
 
 section .container {
   position: relative;
@@ -33,7 +45,7 @@ section .container {
 
 section .container2 {
   position: relative;
-  width: 800px;
+  width: 1100px;
   height: 600px;
   background: #fff;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
@@ -48,7 +60,6 @@ section .container .user {
   height: 100%;
   display: flex;
 }
-
 
 section .container .user .imgBx {
   position: relative;
@@ -89,6 +100,24 @@ section .container .user .formBx h2 {
   color: #555;
 }
 
+Input{
+  font-size: 1px;
+}
+
+section .container .user .formBx Input {
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 8px;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
 section .container .user .formBx input {
   width: 100%;
   padding: 10px;
@@ -103,6 +132,17 @@ section .container .user .formBx input {
   font-weight: 300;
 }
 
+section .container .user .formBx ButtonLoading {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
 section .container .user .formBx input[type='submit'] {
   max-width: 110px;
   background: #677eff;
@@ -114,7 +154,25 @@ section .container .user .formBx input[type='submit'] {
   transition: 0.5s;
 }
 
+section .container .user .formBx Input[type='submit'] {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
 section .container .user.signupBx .formBx input[type='submit'] {
+  background: #e73e49;
+}
+
+section .container .user.signupBx ButtonLoading {
+  background: #e73e49;
+}
+
+section .container .user.signupBx .formBx Input[type='submit'] {
   background: #e73e49;
 }
 
@@ -301,3 +359,16 @@ section .container .user .formBx *:required {
   .formBx .grid > *:not(:last-child) {
     margin-bottom: 0; */
 /* } */
+
+.Lado{
+  display: flex;
+  justify-content: space-around;
+}
+.subLado{
+  margin: 0px 5px 0px 5px;
+}
+.ButtonLoadingP{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
 import { Enum_EstadoUsuario } from 'utils/enums';
-// 
+//
 
 
 // DA ERROR PORQUE TINEES QUE EDITAR TOOOOOOODOOS
@@ -27,6 +27,18 @@ const EditarUsuario = () => {
     variables: { _id },
   });
 
+// useEffect(() => {
+//   if(queryData){
+//     // console.log(queryData.Usuario.usuario.nombre);
+//     if(formData.nombre===""){
+//       formData.nombre = queryData.Usuario.usuario.nombre;
+//     }
+//   }
+// }, [formData]);
+
+
+
+
   const {
     data: queryData2,
   } = useQuery(GET_USUARIO, {
@@ -34,21 +46,21 @@ const EditarUsuario = () => {
   });
 
   const [
-    editarUsuarioD,
+    editarUsuario,
     { data: mutationData, loading: mutationLoading, error: mutationError },
   ] = useMutation(EDITAR_USUARIO);
 
   const submitForm = (e) => {
     e.preventDefault();
-    // delete formData.rol;
-    editarUsuarioD({
-      variables: { _id, ...formData },
+    delete formData.rol;
+    editarUsuario({
+      variables: { _id, campos:formData },
     });
   };
 
 
 useEffect(() => {
-        console.log(formData)
+  console.log(formData)
 }, [formData]);
 
 
@@ -70,9 +82,11 @@ useEffect(() => {
 
   if (queryLoading) return <div>Cargando....</div>;
 
+// const darValores = (parametro) => {};
+
   return (
     <div className="flew flex-col w-full h-full items-center justify-center p-10">
-      <Link to="prueba/usuarios">
+      <Link to="/prueba/usuarios">
         <i className="fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900" />
       </Link>
       <h1 className="m-4 text-3xl text-gray-800 font-bold text-center">
@@ -88,38 +102,38 @@ useEffect(() => {
           label="Nombre de la persona:"
           type="text"
           name="nombre"
-          defaultValue={queryData.Usuario.nombre}
+          defaultValue={queryData.Usuario.usuario.nombre}
           // required={true}
         />
         <Input
           label="Apellido de la persona:"
           type="text"
           name="apellido"
-          defaultValue={queryData.Usuario.apellido}
+          defaultValue={queryData.Usuario.usuario.apellido}
           // required={true}
         />
         <Input
           label="Correo de la persona:"
           type="email"
           name="correo"
-          defaultValue={queryData.Usuario.correo}
+          defaultValue={queryData.Usuario.usuario.correo}
           // required={true}
         />
         <Input
           label="Identificación de la persona:"
           type="text"
           name="identificacion"
-          defaultValue={queryData.Usuario.identificacion}
+          defaultValue={queryData.Usuario.usuario.identificacion}
           // required={true}
         />
         <DropDown
           label="Estado de la persona:"
           name="estado"
-          defaultValue={queryData.Usuario.estado}
+          defaultValue={queryData.Usuario.usuario.estado}
           // required={true}
           options={Enum_EstadoUsuario}
         />
-        <span>Rol del usuario: {queryData.Usuario.rol}</span>
+        <span>Rol del usuario: {queryData.Usuario.usuario.rol}</span>
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
           loading={mutationLoading}

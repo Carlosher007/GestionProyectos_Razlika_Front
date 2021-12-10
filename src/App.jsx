@@ -32,8 +32,10 @@ import IndexUsuarios from 'pages/ModuloUsuarios/IndexUsuarios';
 import EstadoUsuarios from 'pages/ModuloUsuarios/EstadoUsuarios/EstadoUsuarios';
 import GestionPerfil from 'pages/ModuloUsuarios/Perfil/GestionPerfil';
 import IndexProyectos2 from 'pages/proyectos/IndexProyectos2';
-
+import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
+import SingUp from 'pages/ModuloUsuarios/Ingreso/SingUp';
 // import PrivateRoute from 'components/PrivateRoute';
+import Ingreso from 'pages/ModuloUsuarios/Ingreso/Ingreso';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -89,14 +91,38 @@ function App() {
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
+            {/* INICIO Y PAGINAS*/}
             <Routes>
               <Route path="/" element={<PrivateLayout />}>
                 <Route path="" element={<InicioProyecto />} />
+                <Route path="miperfil" element={<MiPerfil />} />
+                <Route path="avances" element={<LDAvance />} />
+                <Route path="inscripciones" element={<LDInscripciones />} />
+                <Route path="proyecto" element={<IndexProyectos />} />
+                <Route
+                  path="proyecto/actualizar"
+                  element={<ESTActualizarProyecto />}
+                />
+                <Route
+                  path="proyecto/registrar"
+                  element={<RegistrarProyecto />}
+                />
+                <Route path="proyecto/ver" element={<VerProyectos />} />
+                <Route path="usuarios" element={<IndexUsuarios />} />
+                <Route path="usuarios/estado" element={<EstadoUsuarios />} />
+                <Route
+                  path="usuarios/gestionperfil"
+                  element={<GestionPerfil />}
+                />
               </Route>
+              {/* LOGIN Y REGISTROS */}
               <Route path="/auth" element={<AuthLayout />}>
-                <Route path="register" element={<Register />} />
-                <Route path="login" element={<Login />} />
+                {/* <Route path="register" element={<Register />} /> */}
+                <Route path="register" element={<SingUp />} />
+                {/* <Route path="login" element={<Login />} /> */}
+                <Route path="login" element={<Ingreso />} />
               </Route>
+              {/* PRUEBAS */}
               <Route path="/prueba" element={<PrivateLayout />}>
                 <Route path="usuarios" element={<IndexUsuarios2 />} />
                 <Route
@@ -104,7 +130,9 @@ function App() {
                   element={<EditarUsuario />}
                 />
                 <Route path="proyecto" element={<IndexProyectos2 />} />
+                <Route path="proyecto/nuevo" element={<NuevoProyecto />} />
               </Route>
+              {/* PAGINA */}
             </Routes>
           </BrowserRouter>
         </UserContext.Provider>

@@ -11,7 +11,7 @@ const IndexUsuarios2 = () => {
   // useEffect(()=>{
   //   console.log("data",data)
   // },[]);
-
+//
   useEffect(() => {
     if (error) {
       toast.error('Error consultando los usuarios');
@@ -21,7 +21,7 @@ const IndexUsuarios2 = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <PrivateRoute roleList={['LIDER']}>
+    <PrivateRoute roleList={['LIDER','ADMINISTRADOR']}>
       <div>
         Datos Usuarios:
         <table className="tabla">
@@ -37,9 +37,9 @@ const IndexUsuarios2 = () => {
             </tr>
           </thead>
           <tbody>
-            {data && data.UsuariosBasico.usuario ? (
+            {data && data.Usuarios.usuario ? (
               <>
-                {data.UsuariosBasico.usuario.map((u) => {
+                {data.Usuarios.usuario.map((u) => {
                   return (
                     <tr key={u._id}>
                       <td>{u.nombre}</td>

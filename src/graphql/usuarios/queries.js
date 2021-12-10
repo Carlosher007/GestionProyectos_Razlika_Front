@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
 const GET_USUARIOS = gql`
-  query UsuariosBasico {
-    UsuariosBasico {
+  query Usuarios($filtro: FiltroUsuarios) {
+    Usuarios(filtro: $filtro) {
       succes
       errors {
-        path
         message
+        path
       }
       usuario {
         _id
@@ -14,8 +14,8 @@ const GET_USUARIOS = gql`
         apellido
         identificacion
         correo
-        rol
         estado
+        rol
       }
     }
   }
