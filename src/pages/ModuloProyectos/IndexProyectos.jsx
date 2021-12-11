@@ -4,12 +4,14 @@ import 'styles/nav.css';
 const IndexProyectos = () => {
   return (
     <>
-    <div class="divNav">
-      <Nav titulo="Pagina Inicio" />
-    </div>
-      Index Modulo Proyectos
+      <div class="divNav">
+        <Nav titulo="Modulo de Proyectos" />
+      </div>
+      <div class="contenidoPage">
+      Holis
+      </div>
     </>
-  )
+  );
 }
 
 export default IndexProyectos

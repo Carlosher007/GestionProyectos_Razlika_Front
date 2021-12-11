@@ -12,6 +12,8 @@ import imagenLogin1 from './img/imagenLogin1.jpg';
 import imagenLogin2 from './img/imagenLogin2.jpg';
 import soluWeb from './img/soluWeb.png';
 import coding from './img/coding.png';
+import Watch1 from 'assets/img/Watch1.webp';
+import Watch2 from 'assets/img/Watch2.png';
 
 import help from './icons/help.png'
 import inbox from './icons/inbox.png';
@@ -118,5 +120,13 @@ export default [
   {
     // 22
     img: nuevaImagen,
+  },
+  {
+    // 23
+    img: Watch1,
+  },
+  {
+    // 24
+    img: Watch2,
   },
 ];

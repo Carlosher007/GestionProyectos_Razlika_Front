@@ -36,6 +36,13 @@ import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
 import SingUp from 'pages/ModuloUsuarios/Ingreso/SingUp';
 // import PrivateRoute from 'components/PrivateRoute';
 import Ingreso from 'pages/ModuloUsuarios/Ingreso/Ingreso';
+import IndexInscripciones from 'pages/inscripciones/IndexInscripciones';
+import Error from 'pages/error/Error';
+import RolInvalido from 'pages/error/RolInvalido';
+import CardWatch from 'pages/Prueba/CardWatch';
+import Loading from 'pages/loading/Loading';
+
+
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -85,7 +92,7 @@ function App() {
       });
     }
   }, [authToken]);
-
+//
   return (
     <ApolloProvider client={client}>
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
@@ -93,6 +100,8 @@ function App() {
           <BrowserRouter>
             {/* INICIO Y PAGINAS*/}
             <Routes>
+              <Route path="/error" element={<Error />} />
+              <Route path="/rolerror" element={<RolInvalido />} />
               <Route path="/" element={<PrivateLayout />}>
                 <Route path="" element={<InicioProyecto />} />
                 <Route path="miperfil" element={<MiPerfil />} />
@@ -131,6 +140,9 @@ function App() {
                 />
                 <Route path="proyecto" element={<IndexProyectos2 />} />
                 <Route path="proyecto/nuevo" element={<NuevoProyecto />} />
+                <Route path="inscripciones" element={<IndexInscripciones />} />
+                <Route path="watch" element={<CardWatch />} />
+                <Route path="loading" element={<Loading />} />
               </Route>
               {/* PAGINA */}
             </Routes>

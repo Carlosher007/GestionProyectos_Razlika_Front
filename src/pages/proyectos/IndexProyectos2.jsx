@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import { styled } from '@mui/material/styles';
+// import Accordion from '@mui/material/Accordion';
+// import AccordionSummary from '@mui/material/AccordionSummary';
+// import AccordionDetails from '@mui/material/AccordionDetails';
+// import { styled } from '@mui/material/styles';
 import { useMutation, useQuery } from '@apollo/client';
 import { PROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
@@ -14,21 +14,29 @@ import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
 import { Link } from 'react-router-dom';
 
-const AccordionStyled = styled((props) => <Accordion {...props} />)(
-  ({ theme }) => ({
-    backgroundColor: '#919191',
-  })
-);
-const AccordionSummaryStyled = styled((props) => (
-  <AccordionSummary {...props} />
-))(({ theme }) => ({
-  backgroundColor: '#919191',
-}));
-const AccordionDetailsStyled = styled((props) => (
-  <AccordionDetails {...props} />
-))(({ theme }) => ({
-  backgroundColor: '#ccc',
-}));
+// const AccordionStyled = styled((props) => <Accordion {...props} />)(
+//   ({ theme }) => ({
+//     backgroundColor: '#919191',
+//   })
+// );
+// const AccordionSummaryStyled = styled((props) => (
+//   <AccordionSummary {...props} />
+// ))(({ theme }) => ({
+//   backgroundColor: '#919191',
+// }));
+// const AccordionDetailsStyled = styled((props) => (
+//   <AccordionDetails {...props} />
+// ))(({ theme }) => ({
+//   backgroundColor: '#ccc',
+// }));
+import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
+import { useUser } from 'context/userContext';
+import { toast } from 'react-toastify';
+import {
+  AccordionStyled,
+  AccordionSummaryStyled,
+  AccordionDetailsStyled,
+} from 'components/Accordion';
 
 const IndexProyectos = () => {
   const { data: queryData, loading, error } = useQuery(PROYECTOS);
@@ -39,27 +47,29 @@ const IndexProyectos = () => {
 
   if (loading) return <div>Cargando...</div>;
 
-  if (queryData.ProyectosConTodo.proyecto) {
-    return (
-      <div className="p-10 flex flex-col">
-        <div className="flex w-full items-center justify-center">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Lista de Proyectos
-          </h1>
-        </div>
-        <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-          <div className="my-2 self-end">
-            <button className="bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400">
-              <Link to="nuevo">Crear nuevo proyecto</Link>
-            </button>
+  // if (queryData) {
+    if (queryData.ProyectosBasico.proyecto) {
+      return (
+        <div className="p-10 flex flex-col">
+          <div className="flex w-full items-center justify-center">
+            <h1 className="text-2xl font-bold text-gray-900">
+              Lista de Proyectos
+            </h1>
           </div>
-        </PrivateComponent>
-        {queryData.ProyectosConTodo.proyecto.map((proyecto) => {
-          return <AccordionProyecto proyecto={proyecto} />;
-        })}
-      </div>
-    );
-  }
+          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+            <div className="my-2 self-end">
+              <button className="bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400">
+                <Link to="nuevo">Crear nuevo proyecto</Link>
+              </button>
+            </div>
+          </PrivateComponent>
+          {queryData.ProyectosBasico.proyecto.map((proyecto) => {
+            return <AccordionProyecto proyecto={proyecto} />;
+          })}
+        </div>
+      );
+    }
+  // }
 
   return <></>;
 };
@@ -85,6 +95,13 @@ const AccordionProyecto = ({ proyecto }) => {
               onClick={() => {
                 setShowDialog(true);
               }}
+            />
+          </PrivateComponent>
+          <PrivateComponent roleList={['ESTUDIANTE']}>
+            <InscripcionProyecto
+              idProyecto={proyecto._id}
+              estado={proyecto.estado}
+              inscripciones={proyecto.inscripciones}
             />
           </PrivateComponent>
           <div>Liderado Por: {proyecto.lider.correo}</div>
@@ -160,6 +177,58 @@ const Objetivo = ({ tipo, descripcion }) => {
         <div>Editar</div>
       </PrivateComponent>
     </div>
+  );
+};
+
+const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
+  const [estadoInscripcion, setEstadoInscripcion] = useState('');
+  const [crearInscripcion, { data, loading, error }] =
+    useMutation(CREAR_INSCRIPCION);
+  const { userData } = useUser();
+
+  useEffect(() => {
+    if (userData && inscripciones) {
+      const flt = inscripciones.filter(
+        (el) => el.estudiante._id === userData._id
+      );
+      if (flt.length > 0) {
+        setEstadoInscripcion(flt[0].estado);
+      }
+    }
+  }, [userData, inscripciones]);
+
+  useEffect(() => {
+    if (data) {
+      console.log(data);
+      toast.success('inscripcion creada con exito');
+    }
+  }, [data]);
+
+  const confirmarInscripcion = () => {
+    console.log(idProyecto, userData._id);
+    crearInscripcion({
+      variables: { proyecto: idProyecto, estudiante: userData._id },
+    });
+    setTimeout(function () {
+      window.location.reload();
+    }, 2000);
+  };
+
+  return (
+    <>
+      {estadoInscripcion !== '' ? (
+        <span>
+          Ya estas inscrito en este proyecto y el estado es {estadoInscripcion}
+        </span>
+      ) : (
+        <ButtonLoading
+          onClick={() => confirmarInscripcion()}
+          disabled={estado === 'INACTIVO'}
+          loading={loading}
+          text="Inscribirme en este proyecto"
+        />
+      )}
+    </>
   );
 };
 
