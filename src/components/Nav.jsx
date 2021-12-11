@@ -25,9 +25,9 @@ import {
 // import { ReactComponent as PlusIcon } from '../icons/plus.svg';
 // import { ReactComponent as BellIcon } from '../icons/bell.svg';
 import { ReactComponent as ArrowIcon } from '../icons/arrow.svg';
-
 import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { useUser } from 'context/userContext';
 
 /*
   INSTALAR:
@@ -35,8 +35,15 @@ import { CSSTransition } from 'react-transition-group';
 */
 
 function Nav(props) {
+  const { userData } = useUser();
+  const capitalize = (str) => {
+    if(str!=null){
+      const lower = str.toLowerCase();
+      return str.charAt(0).toUpperCase() + lower.slice(1);
+    }
+  }
   return (
-    <Navbar>
+    <Navbar2>
       {/* <div> */}
       <div className="NavbarCont">
         <p className="title">{props.titulo}</p>
@@ -57,11 +64,15 @@ function Nav(props) {
       <div>
         <Logout />
       </div>
-    </Navbar>
+      <div className="datosUserNav">
+        <div className="datosUserNavInto">{userData.nombre}:</div>
+        <div className="datosUserNavInto">{capitalize(userData.rol)}</div>
+      </div>
+    </Navbar2>
   );
 }
 
-function Navbar(props) {
+function Navbar2(props) {
   return (
     <nav className="navbar">
       <ul className="navbar-nav">{props.children}</ul>

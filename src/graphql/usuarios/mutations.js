@@ -20,5 +20,5 @@ const EDITAR_USUARIO = gql`
     }
   }
 `;
-
+//
 export { EDITAR_USUARIO };

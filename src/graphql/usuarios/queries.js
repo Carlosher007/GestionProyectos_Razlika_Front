@@ -24,7 +24,7 @@ const GET_USUARIOS = gql`
 // AL PARECER ES
 // query Usuario($_id: String!) {
 // Usuario(_id: $_id) {
-
+//
 const GET_USUARIO = gql`
   query Usuario($_id: String!) {
     Usuario(_id: $_id) {

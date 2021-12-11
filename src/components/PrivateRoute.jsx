@@ -1,4 +1,5 @@
 import { useUser } from 'context/userContext';
+import RolInvalido from 'pages/error/RolInvalido';
 import React from 'react';
 
 const PrivateRoute = ({ roleList, children }) => {
@@ -8,7 +9,7 @@ const PrivateRoute = ({ roleList, children }) => {
     return children;
   }
 
-  return <div className='text-9xl text-red-500 '>No estás autorizado para ver este sitio.</div>;
+  return <RolInvalido/>;
 };
 
 export default PrivateRoute;

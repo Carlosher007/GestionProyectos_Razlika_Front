@@ -7,7 +7,7 @@ const VerProyectos = () => {
     <div class="divNav">
       <Nav titulo="Pagina Inicio" />
     </div>
-      Estudiante VER PROYECTOS
+      VER PROYECTOS
     </>
   )
 }

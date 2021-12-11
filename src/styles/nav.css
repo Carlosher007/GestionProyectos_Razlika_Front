@@ -34,7 +34,7 @@ a {
   background-color: var(--bg);
   padding: 0 1rem;
   border-bottom: var(--border);
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -44,7 +44,7 @@ a {
   height: 100%;
   display: flex;
   justify-content: flex-end;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -55,7 +55,7 @@ a {
   align-items: center;
   justify-content: center;
   height: 100%;
-  z-index: 1000;
+  z-index: 10000;
 
 }
 
@@ -72,13 +72,13 @@ a {
   align-items: center;
   justify-content: center;
   transition: filter 300ms;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
 .icon-button:hover {
   filter: brightness(1.2);
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -86,7 +86,7 @@ a {
   fill: var(--text-color);
   width: 20px;
   height: 20px;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -105,14 +105,14 @@ a {
   overflow: hidden;
   transition: height var(--speed) ease;
   /* height: 200px; */
-  z-index: 1000;
+  z-index: 100000;
 
 
 }
 
 .menu {
   width: 100%;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -124,7 +124,7 @@ a {
   transition: background var(--speed);
   padding: 0.5rem;
   /* height: 100%; */
-  z-index: 1000;
+  z-index: 100000;
 
 
 }
@@ -151,37 +151,37 @@ a {
   position: absolute;
   transform: translateX(-110%);
   margin: 100px;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 .menu-primary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 .menu-primary-exit {
   position: absolute;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 .menu-primary-exit-active {
   transform: translateX(-110%);
   transition: all var(--speed) ease;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
 
 .menu-secondary-enter {
   transform: translateX(110%);
-  z-index: 1000;
+  z-index: 100000;
 
 }
 .menu-secondary-enter-active {
   transform: translateX(0%);
   transition: all var(--speed) ease;
-  z-index: 1000;
+  z-index: 100000;
 
 }
 .menu-secondary-exit {
@@ -190,7 +190,7 @@ a {
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
-  z-index: 1000;
+  z-index: 10000;
 
 }
 
@@ -201,7 +201,7 @@ a {
   width: 100%;
   /* background-color: aqua; */
   /* color: aliceblue; */
-  z-index: 1000;
+  z-index: 100000;
 
 }
 
@@ -216,7 +216,7 @@ a {
 }
 
 .divNav{
-  z-index: 1000;
+  z-index: 100000;
 }
 .divContent{
   z-index: -1;
@@ -226,4 +226,18 @@ a {
   background-color: #d6cad2;
   height: 100%;
   min-height: 100vh;
+}
+.datosUserNav{
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+font-size: 24px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;700&display=swap');
+.datosUserNavInto{
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  margin: 0 5px 0 5px;
+  text-transform: capitalize;
 }

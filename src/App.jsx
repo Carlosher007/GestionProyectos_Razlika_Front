@@ -11,7 +11,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import IndexUsuarios2 from 'pages/usuarios';
 import EditarUsuario from 'pages/usuarios/editar';
-import 'styles/globals.css';
 import 'styles/tabla.css';
 import AuthLayout from 'layouts/AuthLayout';
 import Register from 'pages/auth/register';
@@ -29,7 +28,8 @@ import RegistrarProyecto from 'pages/ModuloProyectos/RegistrarProyecto/Registrar
 import VerProyectos from 'pages/ModuloProyectos/VerProyectos/VerProyectos';
 import IndexProyectos from 'pages/ModuloProyectos/IndexProyectos';
 import IndexUsuarios from 'pages/ModuloUsuarios/IndexUsuarios';
-import EstadoUsuarios from 'pages/ModuloUsuarios/EstadoUsuarios/EstadoUsuarios';
+import EstadoUsuariosAD from 'pages/ModuloUsuarios/EstadoUsuarios/EstadoUsuariosAD';
+import EstadoUsuariosLD from 'pages/ModuloUsuarios/EstadoUsuarios/EstadoUsuariosLD';
 import GestionPerfil from 'pages/ModuloUsuarios/Perfil/GestionPerfil';
 import IndexProyectos2 from 'pages/proyectos/IndexProyectos2';
 import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
@@ -41,8 +41,11 @@ import Error from 'pages/error/Error';
 import RolInvalido from 'pages/error/RolInvalido';
 import CardWatch from 'pages/Prueba/CardWatch';
 import Loading from 'pages/loading/Loading';
+import VerProyectosMisProyectos from 'pages/ModuloProyectos/VerProyectos/VerMisProyectos';
 
 
+import 'styles/globals.css';
+import 'styles/nav.css'
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -117,8 +120,20 @@ function App() {
                   element={<RegistrarProyecto />}
                 />
                 <Route path="proyecto/ver" element={<VerProyectos />} />
+                <Route
+                  path="proyecto/vermisproyectos"
+                  element={<VerProyectosMisProyectos />}
+                />
+
                 <Route path="usuarios" element={<IndexUsuarios />} />
-                <Route path="usuarios/estado" element={<EstadoUsuarios />} />
+                <Route
+                  path="usuarios/estadold"
+                  element={<EstadoUsuariosLD />}
+                />
+                <Route
+                  path="usuarios/estadoad"
+                  element={<EstadoUsuariosAD />}
+                />
                 <Route
                   path="usuarios/gestionperfil"
                   element={<GestionPerfil />}
