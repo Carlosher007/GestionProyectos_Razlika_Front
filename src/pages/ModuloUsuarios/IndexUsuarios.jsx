@@ -44,7 +44,7 @@ const IndexUsuarios = () => {
           </PrivateComponent>
           <PrivateComponent roleList={['LIDER', 'ADMINISTRADOR', 'ESTUDIANTE']}>
             <CardDesing
-              claseCard="cardDesing cardDesing1"
+              claseCard="cardDesing cardDesing2"
               icon={FcBusinessman}
               titulo="Editar tu usuarios"
               contenido="En este apartado podrás cambiar los datos de tu usuario, incluyendo la contrraseña, a exepcion del rol"

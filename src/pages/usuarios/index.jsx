@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enums';
 import PrivateRoute from 'components/PrivateRoute';
 import { useUser } from 'context/userContext';
-
+import Loading from '../loading/Loading'
 
 const IndexUsuarios2 = () => {
   const { userData } = useUser();
@@ -22,14 +22,16 @@ const IndexUsuarios2 = () => {
     }
     if(data){
       if(data.Usuarios){
-        if(data.Usuarios.errors){
-        toast.error(data.Usuarios.errors.message);
+        if(data.Usuarios.errors!=[]){
+          if (data.Usuarios.errors[0].message){
+            toast.error(data.Usuarios.errors[0].message);
+          }
         }
       }
     }
   }, [error,data]);
 
-  if (loading) return <div>Cargando....</div>;
+  if (loading) return <Loading/>;
 
   return (
     <PrivateRoute roleList={['LIDER','ADMINISTRADOR']}>

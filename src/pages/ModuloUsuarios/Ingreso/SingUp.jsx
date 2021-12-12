@@ -11,6 +11,7 @@ import { REGISTRO } from 'graphql/auth/mutations';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'context/authContext';
+import { toast } from 'react-toastify';
 
 function SingUp() {
   const { setToken } = useAuth();
@@ -26,8 +27,12 @@ function SingUp() {
     e.preventDefault();
     registro({ variables: formData });
   };
-
   useEffect(() => {
+    if (dataMutation) {
+      if (dataMutation.registro.errors) {
+        toast.error(dataMutation.registro.errors[0].message);
+      }
+    }
     if (dataMutation) {
       if (dataMutation.registro.token) {
         setToken(dataMutation.registro.token);
@@ -35,6 +40,13 @@ function SingUp() {
       }
     }
   }, [dataMutation, setToken, navigate]);
+
+  useEffect(() => {
+    if (errorMutation) {
+      toast.error('Error al registrar el usuario');
+    }
+  }, [errorMutation]);
+
 
   return (
     <>

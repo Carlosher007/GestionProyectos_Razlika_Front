@@ -37,11 +37,11 @@ import { useUser } from 'context/userContext';
 function Nav(props) {
   const { userData } = useUser();
   const capitalize = (str) => {
-    if(str!=null){
+    if (str != null) {
       const lower = str.toLowerCase();
       return str.charAt(0).toUpperCase() + lower.slice(1);
     }
-  }
+  };
   return (
     <Navbar2>
       {/* <div> */}
@@ -150,11 +150,11 @@ function DropdownMenu() {
             Modulo Proyectos
           </DropdownItem>
           {/* SUPONGAMOS QUE QUEREMOS QUE ESTE SOLO APAREZCA PARA LIDER */}
-          <PrivateComponent roleList={['ADMINISTRADOR']}>
-            <NavLink to="/avances">
-              <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
-            </NavLink>
-          </PrivateComponent>
+          {/* <PrivateComponent roleList={['ADMINISTRADOR']}> */}
+          <NavLink to="/avances">
+            <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
+          </NavLink>
+          {/* </PrivateComponent> */}
           <NavLink to="/inscripciones">
             <DropdownItem leftIcon={<Inscripciones />}>
               Inscripciones
@@ -186,12 +186,20 @@ function DropdownMenu() {
           <NavLink to="/usuarios/gestionperfil">
             <DropdownItem leftIcon={<Pencil />}>Editar Perfil</DropdownItem>
           </NavLink>
-
-          <NavLink to="/usuarios/estado">
-            <DropdownItem leftIcon={<EstadoUser />}>
-              Estado Usuarios
-            </DropdownItem>
-          </NavLink>
+          <PrivateComponent roleList={['ADMINISTRADOR']}>
+            <NavLink to="/usuarios/estadoad">
+              <DropdownItem leftIcon={<EstadoUser />}>
+                Estado Usuarios
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
+          <PrivateComponent roleList={['LIDER']}>
+            <NavLink to="/usuarios/estadold">
+              <DropdownItem leftIcon={<EstadoUser />}>
+                Estado Usuarios
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
         </div>
       </CSSTransition>
 
