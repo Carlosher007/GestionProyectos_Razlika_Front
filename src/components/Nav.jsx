@@ -172,7 +172,7 @@ function DropdownMenu() {
       >
         <div className="menu">
           <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>Regresar</h2>
+            <h2 style={{ fontSize: '18px' }}>Regresar</h2>
           </DropdownItem>
 
           <NavLink to="/usuarios">
@@ -204,7 +204,7 @@ function DropdownMenu() {
       >
         <div className="menu">
           <DropdownItem goToMenu="main" leftIcon={<ArrowIcon />}>
-            <h2>Regresar</h2>
+            <h2 style={{ fontSize: '18px' }}>Regresar</h2>
           </DropdownItem>
 
           <NavLink to="/proyecto">
