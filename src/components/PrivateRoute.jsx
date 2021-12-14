@@ -9,7 +9,14 @@ const PrivateRoute = ({ roleList, children }) => {
     return children;
   }
 
-  return <RolInvalido/>;
+  return (
+    <div data-testid="not-authorized">
+      <RolInvalido />;
+      {/* a */}
+    </div>
+  );
+
+
 };
 
 export default PrivateRoute;

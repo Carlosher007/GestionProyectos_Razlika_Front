@@ -46,4 +46,31 @@ const GET_USUARIO = gql`
   }
 `;
 
-export { GET_USUARIOS, GET_USUARIO };
+
+const GET_USUARIOCONTODO = gql`
+  query UsuarioConTodo($_id: String!) {
+    UsuarioConTodo(_id: $_id) {
+      succes
+      errors {
+        path
+        message
+      }
+      usuario {
+        _id
+        nombre
+        apellido
+        identificacion
+        correo
+        rol
+        estado
+        inscripciones {
+          _id
+        }
+        proyectosLiderados {
+          _id
+        }
+      }
+    }
+  }
+`;
+export { GET_USUARIOS, GET_USUARIO, GET_USUARIOCONTODO };

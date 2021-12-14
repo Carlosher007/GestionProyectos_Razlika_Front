@@ -20,7 +20,6 @@ import jwt_decode from 'jwt-decode';
 
 import InicioEspera from 'pages/Inicio/InicioEspera';
 import InicioProyecto from 'pages/Inicio/InicioProyecto';
-import MiPerfil from 'pages/Inicio/MiPerfil';
 import LDAvance from 'pages/ModuloAvances/LDAvance';
 import LDInscripciones from 'pages/ModuloInscripciones/LDInscripciones';
 import ESTActualizarProyecto from 'pages/ModuloProyectos/ActualizarProyecto/ESTActualizarProyecto';
@@ -41,11 +40,13 @@ import Error from 'pages/error/Error';
 import RolInvalido from 'pages/error/RolInvalido';
 import CardWatch from 'pages/Prueba/CardWatch';
 import Loading from 'pages/loading/Loading';
-import VerProyectosMisProyectos from 'pages/ModuloProyectos/VerProyectos/VerMisProyectos';
-
+import VerProyectosMisProyectosLider from 'pages/ModuloProyectos/VerProyectos/VerMisProyectosLider';
+import VerProyectosMisProyectosEstudiante from 'pages/ModuloProyectos/VerProyectos/VerMisProyectosEstudiante';
 
 import 'styles/globals.css';
 import 'styles/nav.css'
+import MiPerfil from 'pages/ModuloUsuarios/Perfil/MiPerfil';
+import NuevoProyectoMod from 'pages/ModuloProyectos/VerProyectos/NuevoProyectoMod';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -107,7 +108,6 @@ function App() {
               <Route path="/rolerror" element={<RolInvalido />} />
               <Route path="/" element={<PrivateLayout />}>
                 <Route path="" element={<InicioProyecto />} />
-                <Route path="miperfil" element={<MiPerfil />} />
                 <Route path="avances" element={<LDAvance />} />
                 <Route path="inscripciones" element={<LDInscripciones />} />
                 <Route path="proyecto" element={<IndexProyectos />} />
@@ -120,9 +120,14 @@ function App() {
                   element={<RegistrarProyecto />}
                 />
                 <Route path="proyecto/ver" element={<VerProyectos />} />
+                <Route path="proyecto/nuevo" element={<NuevoProyectoMod />} />
                 <Route
-                  path="proyecto/vermisproyectos"
-                  element={<VerProyectosMisProyectos />}
+                  path="proyecto/vermisproyectoslider"
+                  element={<VerProyectosMisProyectosLider />}
+                />
+                <Route
+                  path="proyecto/vermisproyectosest"
+                  element={<VerProyectosMisProyectosEstudiante />}
                 />
 
                 <Route path="usuarios" element={<IndexUsuarios />} />
@@ -138,6 +143,7 @@ function App() {
                   path="usuarios/gestionperfil"
                   element={<GestionPerfil />}
                 />
+                <Route path="usuarios/miperfil" element={<MiPerfil />} />
               </Route>
               {/* LOGIN Y REGISTROS */}
               <Route path="/auth" element={<AuthLayout />}>

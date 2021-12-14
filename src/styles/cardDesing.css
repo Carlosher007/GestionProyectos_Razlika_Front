@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #3c2846;
+  background-color: #313131;
 }
 
 .containerDesing {
@@ -64,7 +64,7 @@
   position: relative;
   width: 140px;
   height: 120px;
-  background: #3c2846;
+  background: #313131;
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
   box-shadow: 0 10px 0 rgba(0, 0, 0, 0.1), inset 0 -8px 0 #fff;
@@ -81,7 +81,7 @@
   height: 50px;
   background: transparent;
   border-top-right-radius: 50px;
-  box-shadow: 15px -15px 0px 15px #3c2846;
+  box-shadow: 15px -15px 0px 15px #313131;
 }
 .iconDesing::after {
   content: '';
@@ -92,7 +92,7 @@
   height: 50px;
   background: transparent;
   border-top-left-radius: 50px;
-  box-shadow: -15px -15px 0 15px #3c2846;
+  box-shadow: -15px -15px 0 15px #313131;
 }
 .contentAsh {
   position: absolute;

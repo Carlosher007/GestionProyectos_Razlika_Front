@@ -7,9 +7,9 @@ const InicioProyecto = () => {
   return (
     <>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio"/>
+        <Nav titulo="Pagina Inicio" />
       </div>
-      <div class="contenidoPage">Pagina Inicio</div>
+      <div class="bodyBackgroundDark">Pagina Inicio</div>
     </>
   );
 }

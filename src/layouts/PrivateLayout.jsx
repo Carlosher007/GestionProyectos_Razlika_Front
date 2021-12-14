@@ -41,7 +41,7 @@ const PrivateLayout = () => {
         <Outlet />
       </div>
       <div>
-        <ToastContainer />
+        <ToastContainer className="toastContainerZIndex" />
       </div>
     </>
   );

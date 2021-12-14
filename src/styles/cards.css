@@ -11,7 +11,7 @@
   box-sizing: border-box;
   font-size: 'Poppins',sans-serif;
 }
-.container{
+.containerCardds{
   position: relative;
   display: flex;
   justify-content: center;
@@ -19,14 +19,14 @@
   width: 1200px;
   flex-wrap: wrap;
 }
-.container .card{
+.containerCardds .card{
   position: relative;
-  width: 300px;
+  width: 350px;
   padding: 20px;
   margin: 20px;
   background: #3f3f3f;
 }
-.container .card::before{
+.containerCardds .card::before{
   content: '';
   position: absolute;
   top:0;
@@ -35,25 +35,25 @@
   border-top: 20px solid #17e78c;
   border-right: 20px solid #17e78c;
 }
-.container .card.activate::before{
+.containerCardds .card.activate::before{
   border-top: 20px solid #ff3b7e;
   border-right: 20px solid #ff3b7e;
 }
-.container .card .icon{
+.containerCardds .card .icon{
   margin-bottom: 10px;
 }
-.container .card .icon img{
+.containerCardds .card .icon img{
   max-width: 90px;
 }
-.container .card .content{
+.containerCardds .card .content{
   position: relative;
   height: 215px;
   overflow: hidden;
 }
-.container .card.activate .content{
+.containerCardds .card.activate .content{
   height: auto;
 }
-.container .card .content::before{
+.containerCardds .card .content::before{
   content: '';
   position: absolute;
   bottom:0;
@@ -62,20 +62,21 @@
   height: 100px;
   background: linear-gradient(transparent,#3f3f3f);
 }
-.container .card.activate .content::before{
+.containerCardds .card.activate .content::before{
   display: none;
 }
-.container .card .content h3{
+.containerCardds .card .content h3{
   color: #fff;
-  font-size: 1.4em;
+  font-size: 1.8em;
   font-weight: 600;
   margin-bottom: 10px;
 }
-.container .card .content p{
+.containerCardds .card .content p{
   font-weight: 300;
+  font-size: 1.3em;
   color:#ccc;
 }
-.container .card .more{
+.containerCardds .card .more{
   position: relative;
   padding: 10px 15px;
   background: #17e78c;
@@ -88,13 +89,13 @@
   letter-spacing: 2px;
   font-size: 14px;
 }
-.container .card.activate .more{
+.containerCardds .card.activate .more{
   background: #ff3b7e;
   color:#fff;
 }
-.container .card.activate .more::before{
-  content: 'Read Less';
+.containerCardds .card.activate .more::before{
+  content: 'Leer Menos';
 }
-.container .card .more::before{
-  content:'Read More'
+.containerCardds .card .more::before{
+  content:'Leer Más'
 }

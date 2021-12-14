@@ -16,6 +16,7 @@ import PrivateRoute from 'components/PrivateRoute';
 import 'styles/cardUser.css';
 import { FcManager } from 'react-icons/fc';
 import Loading from 'pages/loading/Loading';
+import { AiOutlineLeftCircle } from 'react-icons/ai';
 
 const capitalize = (str) => {
   if (str != null) {
@@ -42,14 +43,23 @@ const EstadoUsuariosAD = () => {
   }, [error, data]);
 
   if (loading) return <Loading />;
-
+// 
   return (
     <PrivateRoute roleList={['ADMINISTRADOR']}>
       <div class="divNav">
         <Nav titulo="Modificar Estado de Usuario" />
       </div>
       <div>
-        <div class="bodyCardUser">
+        <div class="bodyCardUser bodyBackgroundDark">
+          <Link to="/usuarios">
+            <AiOutlineLeftCircle
+              style={{
+                fontSize: '40px',
+                background: '#312a3f',
+                marginLeft: '10px',
+              }}
+            />
+          </Link>
           <section class="cardUser-listUser">
             {data.Usuarios.usuario.map((user) => {
               return <UserCard user={user} />;

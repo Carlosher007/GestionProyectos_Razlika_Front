@@ -155,11 +155,13 @@ function DropdownMenu() {
             <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
           </NavLink>
           {/* </PrivateComponent> */}
-          <NavLink to="/inscripciones">
-            <DropdownItem leftIcon={<Inscripciones />}>
-              Inscripciones
-            </DropdownItem>
-          </NavLink>
+          <PrivateComponent roleList={['LIDER']}>
+            <NavLink to="/inscripciones">
+              <DropdownItem leftIcon={<Inscripciones />}>
+                Inscripciones
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
         </div>
       </CSSTransition>
 
@@ -179,7 +181,7 @@ function DropdownMenu() {
             <DropdownItem leftIcon={<IndexUsuarios />}>Inicio</DropdownItem>
           </NavLink>
 
-          <NavLink to="/miperfil">
+          <NavLink to="/usuarios/miperfil">
             <DropdownItem leftIcon={<IndexUsuarios />}>Mi Perfil</DropdownItem>
           </NavLink>
 
@@ -231,11 +233,29 @@ function DropdownMenu() {
             </DropdownItem>
           </NavLink>
 
-          <NavLink to="/proyecto/ver">
-            <DropdownItem leftIcon={<VerProyectos />}>
-              Ver Proyectos
-            </DropdownItem>
-          </NavLink>
+          <PrivateComponent roleList={['ADMINISTRADOR']}>
+            <NavLink to="/proyecto/ver">
+              <DropdownItem leftIcon={<VerProyectos />}>
+                Ver Proyectos
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
+
+          <PrivateComponent roleList={['LIDER']}>
+            <NavLink to="/proyecto/vermisproyectoslider">
+              <DropdownItem leftIcon={<VerProyectos />}>
+                Ver Proyectos
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
+
+          <PrivateComponent roleList={['ESTUDIANTE']}>
+            <NavLink to="/proyecto/vermisproyectosest">
+              <DropdownItem leftIcon={<VerProyectos />}>
+                Ver Proyectos
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
         </div>
       </CSSTransition>
     </div>

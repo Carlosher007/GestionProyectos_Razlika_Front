@@ -11,8 +11,13 @@ import { nanoid } from 'nanoid';
 import { ObjContext } from 'context/objContext';
 import { useObj } from 'context/objContext';
 import { CREAR_PROYECTO } from 'graphql/proyectos/mutations';
+import Nav from 'components/Nav';
+import 'styles/nav.css';
+import { toast } from 'react-toastify';
+import Loading from 'pages/loading/Loading';
+import PrivateRoute from 'components/PrivateRoute';
 
-const NuevoProyecto = () => {
+const NuevoProyectoMod = () => {
   const { form, formData, updateFormData } = useFormData();
   const [listaUsuarios, setListaUsuarios] = useState({});
   const { data, loading, error } = useQuery(GET_USUARIOS, {
@@ -28,8 +33,8 @@ const NuevoProyecto = () => {
 
   useEffect(() => {
     if (data) {
-      if(data.Usuarios){
-        if(data.Usuarios.usuario){
+      if (data.Usuarios) {
+        if (data.Usuarios.usuario) {
           const lu = {};
           data.Usuarios.usuario.forEach((elemento) => {
             lu[elemento._id] = elemento.correo;
@@ -40,65 +45,102 @@ const NuevoProyecto = () => {
     }
   }, [data]);
 
-  const submitForm = (e) => {
-    e.preventDefault();
-
-    if(formData.objetivos){
-      formData.objetivos = Object.values(formData.objetivos);
+  useEffect(() => {
+    if (mutationData) {
+      if (mutationData.crearProyecto) {
+        if (mutationData.crearProyecto.errors) {
+          if (mutationData.crearProyecto.errors[0]) {
+            toast.error(mutationData.crearProyecto.errors[0].message);
+          }
+        }
+      }
     }
-    formData.presupuesto = parseFloat(formData.presupuesto);
+    if (mutationError) {
+      toast.error('Error consultando los proyectos');
+    }
+    if (mutationData) {
+      if (mutationData.crearProyecto) {
+        if (mutationData.crearProyecto.proyecto) {
+          toast.success('Proyecto creado con exito');
+        }
+      }
+    }
+  }, [mutationData, mutationError]);
 
-    crearProyecto({
-      variables: formData,
-    });
-    e.target.reset();
-  };
+const submitForm = (e) => {
+  e.preventDefault();
 
-  if (loading) return <div>...Loading</div>;
+  if (formData.objetivos) {
+    formData.objetivos = Object.values(formData.objetivos);
+  }
+  formData.presupuesto = parseFloat(formData.presupuesto);
+
+  crearProyecto({
+    variables: formData,
+  });
+  e.target.reset();
+};
+
+if (loading) return <Loading/>;
+
+
 
   return (
-    <div className="p-10 flex flex-col items-center">
-      <div className="self-start">
-        <Link to="/prueba/proyecto">
-          <i className="fas fa-arrow-left" />
-        </Link>
+    <PrivateRoute roleList={['LIDER']}>
+      <div class="divNav">
+        <Nav titulo="Pagina Inicio" />
       </div>
-      <h1 className="text-2xl font-bold text-gray-900">Crear Nuevo Proyecto</h1>
-      <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
-        <Input
-          name="nombre"
-          label="Nombre del Proyecto"
-          required={true}
-          type="text"
-        />
-        <Input
-          name="presupuesto"
-          label="Presupuesto del Proyecto"
-          required={true}
-          type="number"
-        />
-        <Input
-          name="fechaInicio"
-          label="Fecha de Inicio"
-          required={true}
-          type="date"
-        />
-        <Input
-          name="fechaFin"
-          label="Fecha de Fin"
-          required={true}
-          type="date"
-        />
-        <DropDown
-          label="Líder"
-          options={listaUsuarios}
-          name="lider"
-          required={true}
-        />
-        <Objetivos />
-        <ButtonLoading text="Crear Proyecto" loading={false} disabled={false} />
-      </form>
-    </div>
+      <div className="bodyBackgroundWhite">
+        <div className="p-10 flex flex-col items-center">
+          <div className="self-start">
+            <Link to="/proyecto/vermisproyectoslider">
+              <i className="fas fa-arrow-left" />
+            </Link>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Crear Nuevo Proyecto
+          </h1>
+          <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
+            <Input
+              name="nombre"
+              label="Nombre del Proyecto"
+              required={true}
+              type="text"
+            />
+            <Input
+              name="presupuesto"
+              label="Presupuesto del Proyecto"
+              required={true}
+              type="number"
+            />
+            <Input
+              name="fechaInicio"
+              label="Fecha de Inicio"
+              required={true}
+              type="date"
+            />
+            <Input
+              name="fechaFin"
+              label="Fecha de Fin"
+              required={true}
+              type="date"
+            />
+            <DropDown
+              label="Líder"
+              options={listaUsuarios}
+              name="lider"
+              required={true}
+            />
+            <Objetivos />
+            <ButtonLoading
+              text="Crear Proyecto"
+              loading={false}
+              disabled={false}
+            />
+          </form>
+        </div>
+      </div>
+    </PrivateRoute>
   );
 };
 
@@ -170,4 +212,4 @@ const FormObjetivo = ({ id }) => {
   );
 };
 
-export default NuevoProyecto;
+export default NuevoProyectoMod;

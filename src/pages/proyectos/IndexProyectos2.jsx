@@ -14,6 +14,8 @@ import useFormData from 'hooks/useFormData';
 import PrivateComponent from 'components/PrivateComponent';
 import { Link } from 'react-router-dom';
 
+// VER COMO HACER REFETCH, ALGO COMO LAS INSCRIPCIONES DE indexInscripciones
+
 // const AccordionStyled = styled((props) => <Accordion {...props} />)(
 //   ({ theme }) => ({
 //     backgroundColor: '#919191',
@@ -48,27 +50,27 @@ const IndexProyectos = () => {
   if (loading) return <div>Cargando...</div>;
 
   // if (queryData) {
-    if (queryData.ProyectosBasico.proyecto) {
-      return (
-        <div className="p-10 flex flex-col">
-          <div className="flex w-full items-center justify-center">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Lista de Proyectos
-            </h1>
-          </div>
-          <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-            <div className="my-2 self-end">
-              <button className="bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400">
-                <Link to="nuevo">Crear nuevo proyecto</Link>
-              </button>
-            </div>
-          </PrivateComponent>
-          {queryData.ProyectosBasico.proyecto.map((proyecto) => {
-            return <AccordionProyecto proyecto={proyecto} />;
-          })}
+  if (queryData.ProyectosBasico.proyecto) {
+    return (
+      <div className="p-10 flex flex-col">
+        <div className="flex w-full items-center justify-center">
+          <h1 className="text-2xl font-bold text-gray-900">
+            Lista de Proyectos
+          </h1>
         </div>
-      );
-    }
+        <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
+          <div className="my-2 self-end">
+            <button className="bg-indigo-500 text-gray-50 p-2 rounded-lg shadow-lg hover:bg-indigo-400">
+              <Link to="nuevo">Crear nuevo proyecto</Link>
+            </button>
+          </div>
+        </PrivateComponent>
+        {queryData.ProyectosBasico.proyecto.map((proyecto) => {
+          return <AccordionProyecto proyecto={proyecto} />;
+        })}
+      </div>
+    );
+  }
   // }
 
   return <></>;
@@ -173,7 +175,7 @@ const Objetivo = ({ tipo, descripcion }) => {
     <div className="mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col items-center justify-center shadow-xl">
       <div className="text-lg font-bold">{tipo}</div>
       <div>{descripcion}</div>
-      <PrivateComponent roleList={['ADMINISTRADOR']}>
+      <PrivateComponent roleList={['ADMINISTRADOR',"LIDER"]}>
         <div>Editar</div>
       </PrivateComponent>
     </div>
@@ -190,6 +192,8 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     if (userData && inscripciones) {
       const flt = inscripciones.filter(
         (el) => el.estudiante._id === userData._id
+        // el.estudiante._id
+        // (el) => console.log(el._id)
       );
       if (flt.length > 0) {
         setEstadoInscripcion(flt[0].estado);

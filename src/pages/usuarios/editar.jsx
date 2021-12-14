@@ -9,12 +9,13 @@ import { toast } from 'react-toastify';
 import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
 import { Enum_EstadoUsuario } from 'utils/enums';
-//
+import { useUser } from 'context/userContext';
 
 // DA ERROR PORQUE TINEES QUE EDITAR TOOOOOOODOOS
 
 const EditarUsuario = () => {
   const { form, formData, updateFormData } = useFormData(null);
+
   const { _id } = useParams();
   const [nameUser, setNameUser] = useState('');
 
@@ -57,7 +58,6 @@ const EditarUsuario = () => {
       if (mutationData) {
         if (mutationData.editarUsuario) {
           if (mutationData.editarUsuario.errors) {
-            console.log("aaaaaa")
             toast.error(mutationData.editarUsuario.errors[0].message);
           }
         }

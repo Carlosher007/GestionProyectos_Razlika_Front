@@ -1,9 +1,8 @@
 import { gql } from '@apollo/client';
 
 const PROYECTOS = gql`
-  query ProyectosBasico {
+  query Proyecto {
     ProyectosBasico {
-      succes
       errors {
         path
         message
@@ -11,24 +10,37 @@ const PROYECTOS = gql`
       proyecto {
         _id
         nombre
+        presupuesto
+        fechaInicio
+        fechaFin
+        estado
+        fase
         lider {
           _id
+          nombre
+          apellido
           correo
         }
-        estado
         objetivos {
+          _id
           descripcion
           tipo
         }
         inscripciones {
+          _id
           estado
           estudiante {
             _id
+            nombre
           }
+        }
+        avances {
+          _id
         }
       }
     }
   }
 `;
+
 
 export { PROYECTOS };

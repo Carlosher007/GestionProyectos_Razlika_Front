@@ -3,7 +3,7 @@
 .bodyCardUser {
   padding: 0;
   margin: 0;
-  background-color: #312a3f;
+  background-color: #313131;
   color: white;
   font-family: 'DM Mono', monospace;
   min-height: 100vh;
@@ -34,7 +34,7 @@ a {
 }
 
 .cardUser {
-  height: 450px;
+  height: 470px;
   width: 400px;
   min-width: 250px;
   padding: 1.5rem;
@@ -161,6 +161,16 @@ a {
 }
 
 .tagsUser button:hover {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  text-shadow: none;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-box-decoration-break: clone;
+  background-clip: text;
+  border-color: white;
+}
+
+.tagsUser ButtonLoading:hover {
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   text-shadow: none;
   -webkit-text-fill-color: transparent;

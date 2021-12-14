@@ -1,6 +1,6 @@
 import React from 'react'
 import Imagenes from 'assets/Imagenes';
-import 'styles/cardWatch.css'
+// import 'styles/cardWatch.css'
 
 const CardWatch = () => {
   return (
