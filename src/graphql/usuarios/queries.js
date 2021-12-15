@@ -47,7 +47,6 @@ const GET_USUARIO = gql`
   }
 `;
 
-
 const GET_USUARIOCONTODO = gql`
   query UsuarioConTodo($_id: String!) {
     UsuarioConTodo(_id: $_id) {
@@ -57,6 +56,43 @@ const GET_USUARIOCONTODO = gql`
         message
       }
       usuario {
+        inscripciones {
+          proyecto {
+            _id
+            nombre
+            presupuesto
+            fechaInicio
+            fechaFin
+            fase
+            estado
+            lider {
+              _id
+              nombre
+              apellido
+              correo
+            }
+            objetivos {
+              _id
+              descripcion
+              tipo
+            }
+            avances {
+              _id
+            }
+            inscripciones {
+              _id
+            }
+          }
+          _id
+          estado
+          estudiante {
+            _id
+            nombre
+          }
+        }
+        proyectosLiderados {
+          _id
+        }
         _id
         nombre
         apellido
@@ -65,12 +101,6 @@ const GET_USUARIOCONTODO = gql`
         rol
         estado
         foto
-        inscripciones {
-          _id
-        }
-        proyectosLiderados {
-          _id
-        }
       }
     }
   }

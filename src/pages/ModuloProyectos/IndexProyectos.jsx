@@ -9,6 +9,7 @@ import 'styles/cardDesing.css';
 import PrivateComponent from 'components/PrivateComponent';
 import { BsJournalArrowUp } from 'react-icons/bs';
 import { BsLightningCharge } from 'react-icons/bs';
+import { BiBookmarkMinus as VerEstd } from 'react-icons/bi';
 
 /**
 BACKGROUND:
@@ -33,7 +34,7 @@ const IndexProyectos = () => {
             <CardDesing
               claseCard="cardDesing cardDesing1"
               icon={AiFillFileZip}
-              titulo="Ver tus proyectos"
+              titulo="Ver todos los proyectos"
               contenido="En este apartado, podras listar todos los proyectos"
               enlace="/proyecto/ver"
             />
@@ -42,10 +43,10 @@ const IndexProyectos = () => {
           <PrivateComponent roleList={['ESTUDIANTE']}>
             <CardDesing
               claseCard="cardDesing cardDesing1"
-              icon={AiFillFileZip}
-              titulo="Ver tus proyectos"
+              icon={VerEstd}
+              titulo="Ver todos los proyectos"
               contenido="En este apartado, podras listar todos los proyectos e inscribirte a aquellos en los que no estes"
-              enlace="/proyecto/ver"
+              enlace="/proyecto/verestd"
             />
           </PrivateComponent>
 
@@ -79,15 +80,15 @@ const IndexProyectos = () => {
             />
           </PrivateComponent>
 
-          <PrivateComponent roleList={['ESTUDIANTE']}>
+          {/* <PrivateComponent roleList={['ESTUDIANTE']}>
             <CardDesing
               claseCard="cardDesing cardDesing3"
               icon={AiFillFileZip}
-              titulo="Ver todos los proyectos"
+              titulo="Ver todos tus proyectos"
               contenido="En este apartado, tu como estudiante podrás ver todos tus proyectos y ver detalles de cada uno de estos."
               enlace="/proyecto/vermisproyectosest"
             />
-          </PrivateComponent>
+          </PrivateComponent> */}
         </div>
       </div>
     </>

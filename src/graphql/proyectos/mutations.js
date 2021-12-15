@@ -54,24 +54,67 @@ const EDITAR_OBJETIVO = gql`
   mutation EditarObjetivo(
     $idProyecto: String!
     $indexObjetivo: Int!
-    $campos: camposObjetivo!
+    $campos: camposObjetivod!
   ) {
     editarObjetivo(
       idProyecto: $idProyecto
       indexObjetivo: $indexObjetivo
       campos: $campos
     ) {
-      _id
+      succes
+      errors {
+        path
+        message
+      }
+      proyecto {
+        _id
+        nombre
+        objetivos {
+          tipo
+        }
+      }
     }
   }
 `;
 
 const ELIMINAR_OBJETIVO = gql`
-  mutation Mutation($idProyecto: String!, $idObjetivo: String!) {
+  mutation EliminarObjetivo($idProyecto: String!, $idObjetivo: String!) {
     eliminarObjetivo(idProyecto: $idProyecto, idObjetivo: $idObjetivo) {
-      _id
+      succes
+      errors {
+        path
+        message
+      }
+      proyecto {
+        _id
+        objetivos {
+          _id
+          descripcion
+        }
+      }
     }
   }
 `;
 
-export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO };
+const CREAR_OBJETIVO = gql`
+  mutation CrearObjetivo($idProyecto: String!, $campos: camposObjetivo!) {
+    crearObjetivo(idProyecto: $idProyecto, campos: $campos) {
+      succes
+      errors {
+        message
+        path
+      }
+      proyecto {
+        _id
+        nombre
+        objetivos {
+          _id
+          descripcion
+          tipo
+        }
+      }
+    }
+  }
+`;
+
+export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO , CREAR_OBJETIVO};

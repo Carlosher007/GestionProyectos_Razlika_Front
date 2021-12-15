@@ -48,6 +48,7 @@ import 'styles/nav.css';
 import MiPerfil from 'pages/ModuloUsuarios/Perfil/MiPerfil';
 import NuevoProyectoMod from 'pages/ModuloProyectos/VerProyectos/NuevoProyectoMod';
 import VerProyectosLider from 'pages/ModuloProyectos/VerProyectos/VerProyectosLider';
+import VerProyectosEstd from 'pages/ModuloProyectos/VerProyectos/VerProyectosEstd';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -131,9 +132,14 @@ function App() {
                   path="proyecto/verproyectoslider"
                   element={<VerProyectosLider />}
                 />
-                <Route
+                {/* <Route
                   path="proyecto/vermisproyectosest"
                   element={<VerProyectosMisProyectosEstudiante />}
+                /> */}
+
+                <Route
+                  path="proyecto/verestd"
+                  element={< VerProyectosEstd/>}
                 />
 
                 <Route path="usuarios" element={<IndexUsuarios />} />

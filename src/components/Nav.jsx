@@ -8,6 +8,7 @@ import {
   GestionUsuarios,
   Inicio,
   Menu,
+  VerEstd,
   User,
   GestionProyectos,
   Avances,
@@ -163,9 +164,12 @@ function DropdownMenu() {
           </DropdownItem>
           {/* SUPONGAMOS QUE QUEREMOS QUE ESTE SOLO APAREZCA PARA LIDER */}
           {/* <PrivateComponent roleList={['ADMINISTRADOR']}> */}
-          <NavLink to="/avances">
-            <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
-          </NavLink>
+          <PrivateComponent roleList={['ESTUDIANTE']}>
+            <NavLink to="/avances">
+              <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
+            </NavLink>
+          </PrivateComponent>
+
           {/* </PrivateComponent> */}
           <PrivateComponent roleList={['LIDER']}>
             <NavLink to="/inscripciones">
@@ -270,10 +274,18 @@ function DropdownMenu() {
             </NavLink>
           </PrivateComponent>
 
-          <PrivateComponent roleList={['ESTUDIANTE']}>
+          {/* <PrivateComponent roleList={['ESTUDIANTE']}>
             <NavLink to="/proyecto/vermisproyectosest">
               <DropdownItem leftIcon={<VerProyectos />}>
-                Ver Proyectos
+                Ver tus  Proyectos
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent> */}
+
+          <PrivateComponent roleList={['ESTUDIANTE']}>
+            <NavLink to="/proyecto/verestd">
+              <DropdownItem leftIcon={<VerEstd />}>
+                Ver todos los proyectos
               </DropdownItem>
             </NavLink>
           </PrivateComponent>

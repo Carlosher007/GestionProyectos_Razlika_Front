@@ -32,6 +32,15 @@ function Ingreso() {
     try {
       if (dataMutation) {
         // if (dataMutation.login) {
+          if(dataMutation){
+            if(dataMutation.login){
+              if(dataMutation.login.errors){
+                if(dataMutation.login.errors[0]){
+                  toast.warn(dataMutation.login.errors[0].message);
+                }
+              }
+            }
+          }
         if (dataMutation.login.token) {
           setToken(dataMutation.login.token);
           navigate('/');

@@ -14,6 +14,7 @@ import { BsLightningCharge as ActualizarProyecto } from 'react-icons/bs';
 import { BsJournalArrowUp as RegistrarProyecto } from 'react-icons/bs';
 import { BsChatDots as VerProyectos } from 'react-icons/bs';
 import { FcImport as Logouti } from 'react-icons/fc';
+import { BiBookmarkMinus as VerEstd }  from "react-icons/bi";
 
 
-export {Inicio,Menu,User,GestionUsuarios,Flecha,GestionProyectos,Avances,Inscripciones,IndexUsuarios,Pencil,EstadoUser,IndexProyectos, ActualizarProyecto,RegistrarProyecto,VerProyectos,Logouti}
+export {Inicio,Menu,User,GestionUsuarios,Flecha,GestionProyectos,Avances,Inscripciones,IndexUsuarios,Pencil,EstadoUser,IndexProyectos, ActualizarProyecto,RegistrarProyecto,VerProyectos,Logouti, VerEstd}
