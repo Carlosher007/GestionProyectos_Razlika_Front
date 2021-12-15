@@ -65,6 +65,18 @@ function Nav(props) {
         <Logout />
       </div>
       <div className="datosUserNav">
+        <div>
+          {userData.foto ? (
+            <img
+              style={{ height: '60px', marginRight: '70px' }}
+              className=" datosUserNavInto rounded-full"
+              src={userData.foto}
+              alt="Foto"
+            />
+          ) : (
+            <></>
+          )}
+        </div>
         <div className="datosUserNavInto">{userData.nombre}:</div>
         <div className="datosUserNavInto">{capitalize(userData.rol)}</div>
       </div>

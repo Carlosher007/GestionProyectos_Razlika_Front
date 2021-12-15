@@ -41,6 +41,7 @@ const GET_USUARIO = gql`
         correo
         rol
         estado
+        foto
       }
     }
   }
@@ -63,6 +64,7 @@ const GET_USUARIOCONTODO = gql`
         correo
         rol
         estado
+        foto
         inscripciones {
           _id
         }

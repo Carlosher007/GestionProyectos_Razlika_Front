@@ -93,7 +93,7 @@ if (loading) return <Loading/>;
       <div className="bodyBackgroundWhite">
         <div className="p-10 flex flex-col items-center">
           <div className="self-start">
-            <Link to="/proyecto/vermisproyectoslider">
+            <Link to="/proyecto">
               <i className="fas fa-arrow-left" />
             </Link>
           </div>

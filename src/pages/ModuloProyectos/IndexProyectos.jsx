@@ -8,6 +8,7 @@ import { AiTwotoneHdd } from 'react-icons/ai';
 import 'styles/cardDesing.css';
 import PrivateComponent from 'components/PrivateComponent';
 import { BsJournalArrowUp } from 'react-icons/bs';
+import { BsLightningCharge } from 'react-icons/bs';
 
 /**
 BACKGROUND:
@@ -65,6 +66,16 @@ const IndexProyectos = () => {
               titulo="Ver todos los proyectos registrados"
               contenido="En este apartado, tu como lider, podras listar todos los proyectos. Así mismo podras tener cada detalle de estos y crear uno nuevo"
               enlace="/proyecto/verproyectoslider"
+            />
+          </PrivateComponent>
+
+          <PrivateComponent roleList={['LIDER']}>
+            <CardDesing
+              claseCard="cardDesing cardDesing2"
+              icon={AiFillFileZip}
+              titulo="Registrar Proyecto"
+              contenido="Crear un nuevo proyecto, con objetivos y demás"
+              enlace="/proyecto/nuevo"
             />
           </PrivateComponent>
 

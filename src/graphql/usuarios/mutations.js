@@ -11,6 +11,7 @@ const EDITAR_USUARIO = gql`
       usuario {
         _id
         nombre
+        foto
         apellido
         identificacion
         correo

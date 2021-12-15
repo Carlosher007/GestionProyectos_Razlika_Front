@@ -12,8 +12,10 @@ import Loading from 'pages/loading/Loading';
 import { useUser } from 'context/userContext';
 import 'styles/cards.css';
 import { AiOutlineLeftCircle } from 'react-icons/ai';
+import { uploadFormData } from 'utils/uploadFormData';
 //
 const MiPerfil = () => {
+  const [editFoto, setEditFoto] = useState(false);
   const { userData } = useUser();
   const _id = userData._id;
   console.log(_id);
