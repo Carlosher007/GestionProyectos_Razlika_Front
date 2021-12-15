@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+//
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_USUARIO } from 'graphql/usuarios/queries';
 import Input from 'components/Input';
@@ -58,7 +59,7 @@ const EditarUsuario = () => {
       if (mutationData) {
         if (mutationData.editarUsuario) {
           if (mutationData.editarUsuario.errors) {
-            toast.error(mutationData.editarUsuario.errors[0].message);
+            // toast.error(mutationData.editarUsuario.errors[0].message);
           }
         }
       }

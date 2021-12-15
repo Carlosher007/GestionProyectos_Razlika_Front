@@ -22,7 +22,7 @@ import InicioEspera from 'pages/Inicio/InicioEspera';
 import InicioProyecto from 'pages/Inicio/InicioProyecto';
 import LDAvance from 'pages/ModuloAvances/LDAvance';
 import LDInscripciones from 'pages/ModuloInscripciones/LDInscripciones';
-import ESTActualizarProyecto from 'pages/ModuloProyectos/ActualizarProyecto/ESTActualizarProyecto';
+import LDActualizarProyecto from 'pages/ModuloProyectos/ActualizarProyecto/LDActualizarProyecto';
 import RegistrarProyecto from 'pages/ModuloProyectos/RegistrarProyecto/RegistrarProyecto';
 import VerProyectos from 'pages/ModuloProyectos/VerProyectos/VerProyectos';
 import IndexProyectos from 'pages/ModuloProyectos/IndexProyectos';
@@ -44,9 +44,10 @@ import VerProyectosMisProyectosLider from 'pages/ModuloProyectos/VerProyectos/Ve
 import VerProyectosMisProyectosEstudiante from 'pages/ModuloProyectos/VerProyectos/VerMisProyectosEstudiante';
 
 import 'styles/globals.css';
-import 'styles/nav.css'
+import 'styles/nav.css';
 import MiPerfil from 'pages/ModuloUsuarios/Perfil/MiPerfil';
 import NuevoProyectoMod from 'pages/ModuloProyectos/VerProyectos/NuevoProyectoMod';
+import VerProyectosLider from 'pages/ModuloProyectos/VerProyectos/VerProyectosLider';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -96,7 +97,7 @@ function App() {
       });
     }
   }, [authToken]);
-//
+  //
   return (
     <ApolloProvider client={client}>
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
@@ -112,8 +113,8 @@ function App() {
                 <Route path="inscripciones" element={<LDInscripciones />} />
                 <Route path="proyecto" element={<IndexProyectos />} />
                 <Route
-                  path="proyecto/actualizar"
-                  element={<ESTActualizarProyecto />}
+                  path="proyecto/editar/:_id"
+                  element={<LDActualizarProyecto />}
                 />
                 <Route
                   path="proyecto/registrar"
@@ -124,6 +125,10 @@ function App() {
                 <Route
                   path="proyecto/vermisproyectoslider"
                   element={<VerProyectosMisProyectosLider />}
+                />
+                <Route
+                  path="proyecto/verproyectoslider"
+                  element={<VerProyectosLider />}
                 />
                 <Route
                   path="proyecto/vermisproyectosest"

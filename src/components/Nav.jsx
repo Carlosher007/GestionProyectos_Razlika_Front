@@ -221,17 +221,18 @@ function DropdownMenu() {
             <DropdownItem leftIcon={<IndexProyectos />}>Inicio</DropdownItem>
           </NavLink>
 
-          <NavLink to="/proyecto/actualizar">
+          {/* <NavLink to="/proyecto/actualizar">
             <DropdownItem leftIcon={<ActualizarProyecto />}>
               Actualizar Proyectos
             </DropdownItem>
-          </NavLink>
-
-          <NavLink to="/proyecto/registrar">
-            <DropdownItem leftIcon={<RegistrarProyecto />}>
-              Registrar Proyectos
-            </DropdownItem>
-          </NavLink>
+          </NavLink> */}
+          <PrivateComponent roleList={['LIDER']}>
+            <NavLink to="/proyecto/nuevo">
+              <DropdownItem leftIcon={<ActualizarProyecto />}>
+                Registrar Proyectos
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
 
           <PrivateComponent roleList={['ADMINISTRADOR']}>
             <NavLink to="/proyecto/ver">
@@ -243,8 +244,16 @@ function DropdownMenu() {
 
           <PrivateComponent roleList={['LIDER']}>
             <NavLink to="/proyecto/vermisproyectoslider">
+              <DropdownItem leftIcon={<RegistrarProyecto />}>
+                Ver Mis Proyectos Y Registrar
+              </DropdownItem>
+            </NavLink>
+          </PrivateComponent>
+
+          <PrivateComponent roleList={['LIDER']}>
+            <NavLink to="/proyecto/verproyectoslider">
               <DropdownItem leftIcon={<VerProyectos />}>
-                Ver Proyectos
+                Ver Todos los Proyectos Y Registrar
               </DropdownItem>
             </NavLink>
           </PrivateComponent>

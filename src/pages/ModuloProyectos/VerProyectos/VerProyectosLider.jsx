@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Imagenes from 'assets/Imagenes';
 import { useMutation, useQuery } from '@apollo/client';
-import { PROYECTOS, MISPROYECTOS} from 'graphql/proyectos/queries';
+import { PROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
 import { Dialog } from '@mui/material';
 import { Enum_EstadoProyecto } from 'utils/enums';
@@ -10,7 +10,6 @@ import useFormData from 'hooks/useFormData';
 import { EDITAR_PROYECTO } from 'graphql/proyectos/mutations';
 import PrivateComponent from 'components/PrivateComponent';
 import { Link } from 'react-router-dom';
-import { FcEditImage} from 'react-icons/fc';
 import Nav from 'components/Nav';
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutations';
 import { toast } from 'react-toastify';
@@ -25,16 +24,18 @@ import { useUser } from 'context/userContext';
 import Loading from 'pages/loading/Loading';
 import PrivateRoute from 'components/PrivateRoute';
 import { AiOutlineLeftCircle } from 'react-icons/ai';
-//
-const VerProyectosMisProyectosLider = () => {
-  const { data: queryData, loading, error } = useQuery(MISPROYECTOS);
+import { FcEditImage } from 'react-icons/fc';
+
+
+const VerProyectosLider = () => {
+  const { data: queryData, loading, error } = useQuery(PROYECTOS);
 
   useEffect(() => {
     if (queryData) {
-      if (queryData.VerProyectosLidero) {
-        if (queryData.VerProyectosLidero.errors) {
-          if (queryData.VerProyectosLidero.errors[0]) {
-            toast.error(queryData.VerProyectosLidero.errors[0].message);
+      if (queryData.ProyectosBasico) {
+        if (queryData.ProyectosBasico.errors) {
+          if (queryData.ProyectosBasico.errors[0]) {
+            toast.error(queryData.ProyectosBasico.errors[0].message);
           }
         }
       }
@@ -71,10 +72,10 @@ const VerProyectosMisProyectosLider = () => {
               </button>
             </div>
           </PrivateComponent>
-          {queryData && queryData.VerProyectosLidero.proyecto ? (
+          {queryData && queryData.ProyectosBasico.proyecto ? (
             <div className="bodyCards">
               <div className="containerCardds">
-                {queryData.VerProyectosLidero.proyecto.map((proyecto) => {
+                {queryData.ProyectosBasico.proyecto.map((proyecto) => {
                   return <Card proyecto={proyecto} />;
                 })}
               </div>
@@ -121,6 +122,9 @@ const Card = ({ proyecto }) => {
     return avances;
   };
 
+  const { userData } = useUser();
+
+
   const capitalize = (str) => {
     if (str != null) {
       const lower = str.toLowerCase();
@@ -138,29 +142,33 @@ const Card = ({ proyecto }) => {
         </div>
         <div className="content">
           <PrivateComponent roleList={['LIDER']}>
-            <i
-              className="mx-4 fas fa-pen text-white hover:text-blue-400"
-              onClick={() => {
-                setShowDialog(true);
-              }}
-            />
+            {userData._id === proyecto.lider._id && (
+              <i
+                className="mx-4 fas fa-pen text-white hover:text-blue-400"
+                onClick={() => {
+                  setShowDialog(true);
+                }}
+              />
+            )}
           </PrivateComponent>
           <h3>Proyecto: {proyecto.nombre}</h3>
           <h3>Estado: {capitalize(proyecto.estado)}</h3>
           <div>
-            <PrivateComponent roleList={['LIDER']}>
-              <Link to={`/proyecto/editar/${proyecto._id}`}>
-                <FcEditImage
-                  style={{
-                    fontSize: '40px',
-                    background: 'transparent',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                  }}
-                />
-              </Link>
-            </PrivateComponent>
+            {userData._id === proyecto.lider._id && (
+              <PrivateComponent roleList={['LIDER']}>
+                <Link to={`/proyecto/editar/${proyecto._id}`}>
+                  <FcEditImage
+                    style={{
+                      fontSize: '40px',
+                      background: 'transparent',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignContent: 'center',
+                    }}
+                  />
+                </Link>
+              </PrivateComponent>
+            )}
           </div>
           <p>
             <span style={{ color: '#BEE1E6' }}>Id: </span>
@@ -270,7 +278,7 @@ const FormEditProyecto = ({ _id }) => {
   }, [dataMutation, error]);
 
   return (
-    <div className="p-4 toastContainerZIndex">
+    <div className="p-4">
       <h1 className="font-bold">Modificar Estado del Proyecto</h1>
       <form
         ref={form}
@@ -294,7 +302,7 @@ const Objetivo = ({ tipo, descripcion }) => {
     <div className="mx-5 my-4 bg-slate-200 p-8 rounded-lg flex flex-col  items-center justify-center shadow-xl">
       <div className="text-lg font-bold">{tipo}</div>
       <div>{descripcion}</div>
-      <PrivateComponent roleList={['ADMINISTRADOR']}>
+      <PrivateComponent roleList={['LIDER']}>
         <div>Editar</div>
       </PrivateComponent>
     </div>
@@ -304,7 +312,7 @@ const Objetivo = ({ tipo, descripcion }) => {
 const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
   const [estadoInscripcion, setEstadoInscripcion] = useState('');
   const [crearInscripcion, { data, loading, error }] =
-    useMutation(CREAR_INSCRIPCION);
+  useMutation(CREAR_INSCRIPCION);
   const { userData } = useUser();
 
   useEffect(() => {
@@ -361,4 +369,4 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
   );
 };
 
-export default VerProyectosMisProyectosLider;
+export default VerProyectosLider;

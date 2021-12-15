@@ -10,7 +10,12 @@ const EDITAR_PROYECTO = gql`
       }
       proyecto {
         _id
+        nombre
+        presupuesto
+        fechaInicio
+        fechaFin
         estado
+        fase
       }
     }
   }
