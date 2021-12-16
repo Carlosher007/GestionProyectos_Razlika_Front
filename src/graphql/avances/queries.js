@@ -27,6 +27,43 @@ const GET_AVANCES = gql`
     }
   }
 `;
-;
-
-export { GET_AVANCES};
+const GET_FILTRARAVANCES = gql`
+  query FiltrarAvance($_idProyecto: String!) {
+    filtrarAvance(_idProyecto: $_idProyecto) {
+      succes
+      errors {
+        message
+        path
+      }
+      avance {
+        descripcion
+        fecha
+        _id
+        observaciones {
+          _id
+          descripcion
+        }
+        proyecto {
+          _id
+          nombre
+          presupuesto
+          fechaInicio
+          fechaFin
+          estado
+          fase
+          lider {
+            _id
+            nombre
+          }
+        }
+        creadoPor {
+          _id
+          nombre
+          apellido
+        }
+      }
+    }
+  }
+`;
+export { GET_AVANCES, GET_FILTRARAVANCES };
+//

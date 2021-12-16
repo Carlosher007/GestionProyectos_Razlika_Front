@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Imagenes from 'assets/Imagenes';
 import { useMutation, useQuery } from '@apollo/client';
 import { PROYECTOS } from 'graphql/proyectos/queries';
+import { BiCalendarEdit } from 'react-icons/bi';
+
 import DropDown from 'components/Dropdown';
 import { Dialog } from '@mui/material';
 import { Enum_EstadoProyecto } from 'utils/enums';
@@ -44,7 +46,7 @@ const VerProyectosEstd = () => {
   }, [queryData, error]);
 
   if (loading) return <Loading />;
-
+//
   return (
     <PrivateRoute roleList={['ESTUDIANTE']}>
       <div class="divNav">
@@ -91,10 +93,26 @@ const VerProyectosEstd = () => {
 };
 
 const Card = ({ proyecto }) => {
+  const { userData } = useUser();
   const [estado, setEstado] = useState('card');
+  const [estadoInscripcion, setEstadoInscripcion] = useState('');
   var inscripciones = 0;
   var objetivos = 0;
   var avances = 0;
+
+useEffect(() => {
+  if (userData && proyecto.inscripciones) {
+    const flt = proyecto.inscripciones.filter(
+      // (el) => el.estudiante._id === userData._id
+      (el) => el.estudiante._id
+      // (el) => console.log(el._id)
+    );
+    if (flt.length > 0) {
+      setEstadoInscripcion(flt[0].estado);
+    }
+  }
+}, [userData, proyecto]);
+
 
   let more = document.querySelectorAll('.more');
   for (let i = 0; i < more.length; i++) {
@@ -130,6 +148,7 @@ const Card = ({ proyecto }) => {
   return (
     // <div className="bodyCards">
     //
+    // avances/:_id
     //   <div className="container">
     <div className={estado}>
       <div className="icon">
@@ -138,6 +157,25 @@ const Card = ({ proyecto }) => {
       <div className="content">
         <h3>Proyecto: {proyecto.nombre}</h3>
         <h3>Estado: {capitalize(proyecto.estado)}</h3>
+        <div>
+          {estadoInscripcion === '' ? (
+            <></>
+          ) : (
+            <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
+              <Link to={`/avances/${proyecto._id}`}>
+                <BiCalendarEdit
+                  style={{
+                    fontSize: '40px',
+                    background: 'transparent',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                  }}
+                />
+              </Link>
+            </PrivateComponent>
+          )}
+        </div>
         <p>
           <span style={{ color: '#BEE1E6' }}>Id: </span>
           {proyecto._id} <br />

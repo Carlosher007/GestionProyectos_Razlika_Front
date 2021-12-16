@@ -17,7 +17,7 @@ import PrivateRoute from 'components/PrivateRoute';
 import { useUser } from 'context/userContext';
 import Loading from 'pages/loading/Loading';
 import { AiOutlineLeftCircle } from 'react-icons/ai';
-//
+
 const LDActualizarProyecto = () => {
   const { form, formData, updateFormData } = useFormData(null);
   const [nameProyecto, setNameProyecto] = useState('');

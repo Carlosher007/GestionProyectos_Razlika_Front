@@ -164,11 +164,11 @@ function DropdownMenu() {
           </DropdownItem>
           {/* SUPONGAMOS QUE QUEREMOS QUE ESTE SOLO APAREZCA PARA LIDER */}
           {/* <PrivateComponent roleList={['ADMINISTRADOR']}> */}
-          <PrivateComponent roleList={['ESTUDIANTE']}>
-            <NavLink to="/avances">
+          {/* <PrivateComponent roleList={['ESTUDIANTE']}>
+            <NavLink to="/proyecto/verestd">
               <DropdownItem leftIcon={<Avances />}>Avances</DropdownItem>
             </NavLink>
-          </PrivateComponent>
+          </PrivateComponent> */}
 
           {/* </PrivateComponent> */}
           <PrivateComponent roleList={['LIDER']}>

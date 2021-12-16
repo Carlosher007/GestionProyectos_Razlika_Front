@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Imagenes from 'assets/Imagenes';
 import Input from 'components/Input';
-
+import { BiCalendarEdit } from 'react-icons/bi';
 import { useMutation, useQuery } from '@apollo/client';
 import { PROYECTOS, MISPROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
@@ -106,6 +106,7 @@ const VerProyectosMisProyectosLider = () => {
 };
 
 const Card = ({ proyecto }) => {
+  const { userData } = useUser();
   const [estado, setEstado] = useState('card');
   const [showDialog, setShowDialog] = useState(false);
   const [showDialog2, setShowDialog2] = useState(false);
@@ -144,6 +145,20 @@ const Card = ({ proyecto }) => {
       return str.charAt(0).toUpperCase() + lower.slice(1);
     }
   };
+  const [estadoInscripcion, setEstadoInscripcion] = useState('');
+  useEffect(() => {
+    if (userData && proyecto.inscripciones) {
+      const flt = proyecto.inscripciones.filter(
+        // (el) => el.estudiante._id === userData._id
+        (el) => el.estudiante._id
+        // (el) => console.log(el._id)
+      );
+      if (flt.length > 0) {
+        setEstadoInscripcion(flt[0].estado);
+      }
+    }
+  }, [userData, proyecto]);
+
   return (
     // <div className="bodyCards">
     //
@@ -164,6 +179,21 @@ const Card = ({ proyecto }) => {
           </PrivateComponent>
           <h3>Proyecto: {proyecto.nombre}</h3>
           <h3>Estado: {capitalize(proyecto.estado)}</h3>
+          <div>
+              <PrivateComponent roleList={['ESTUDIANTE', 'LIDER']}>
+                <Link to={`/avances/${proyecto._id}`}>
+                  <BiCalendarEdit
+                    style={{
+                      fontSize: '40px',
+                      background: 'transparent',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignContent: 'center',
+                    }}
+                  />
+                </Link>
+              </PrivateComponent>
+          </div>
           <div>
             <PrivateComponent roleList={['LIDER']}>
               <Link to={`/proyecto/editar/${proyecto._id}`}>

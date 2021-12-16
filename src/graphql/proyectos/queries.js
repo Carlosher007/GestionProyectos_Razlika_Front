@@ -105,11 +105,24 @@ const PROYECTO = gql`
         lider {
           _id
           nombre
+          apellido
+          correo
         }
         objetivos {
           _id
           descripcion
           tipo
+        }
+        inscripciones {
+          _id
+          estado
+          estudiante {
+            _id
+            nombre
+          }
+        }
+        avances {
+          _id
         }
       }
     }
