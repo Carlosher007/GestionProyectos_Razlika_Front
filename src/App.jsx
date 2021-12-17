@@ -113,6 +113,7 @@ function App() {
               <Route path="/" element={<PrivateLayout />}>
                 <Route path="" element={<InicioProyecto />} />
                 <Route path="avances/crear" element={<CrearAvanceMod />} />
+                {/* <Route path="inscripciones" element={<IndexInscripciones />} /> */}
                 <Route path="avances/:_id" element={<LDAvance />} />
                 <Route path="inscripciones" element={<LDInscripciones />} />
                 <Route path="proyecto" element={<IndexProyectos />} />
@@ -172,7 +173,6 @@ function App() {
                 />
                 <Route path="proyecto" element={<IndexProyectos2 />} />
                 <Route path="proyecto/nuevo" element={<NuevoProyecto />} />
-                <Route path="inscripciones" element={<IndexInscripciones />} />
                 <Route path="watch" element={<CardWatch />} />
                 <Route path="loading" element={<Loading />} />
               </Route>

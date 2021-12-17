@@ -27,6 +27,11 @@ const capitalize = (str) => {
 
 const LDInscripciones = () => {
   const { data, loading, error, refetch } = useQuery(GET_INSCRIPCIONES);
+
+  useEffect(() => {
+    console.log('data', data);
+  }, []);
+
   useEffect(() => {
     if (data) {
       if (data.Inscripciones) {

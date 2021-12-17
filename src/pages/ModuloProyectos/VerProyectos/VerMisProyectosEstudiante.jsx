@@ -291,12 +291,12 @@
 
 // export default VerProyectosMisProyectosEstudiante;
 
-import React from 'react'
+// import React from 'react'
 
 const VerMisProyectosEstudiante = () => {
   return (
     <div>
-      
+
     </div>
   )
 }

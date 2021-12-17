@@ -727,7 +727,7 @@ const CardAvances = ({ avance }) => {
           {<img src={Imagenes[20].img} alt="Imagen Avance" />}
         </div>
         <div className="content">
-          <PrivateComponent roleList={['LIDER', 'ESTUDIANTE']}>
+          <PrivateComponent roleList={['ESTUDIANTE']}>
             <i
               className="mx-4 fas fa-pen text-white hover:text-blue-400"
               onClick={() => {
@@ -762,7 +762,7 @@ const CardAvances = ({ avance }) => {
               })}
             </div>
             {avance.observaciones.length < 4 && (
-              <PrivateComponent roleList={['LIDER', 'ESTUDIANTE']}>
+              <PrivateComponent roleList={['LIDER']}>
                 <i
                   className="mx-4 fas fa-plus-square text-white hover:text-blue-400 flex justify-center "
                   onClick={() => {
@@ -1019,64 +1019,63 @@ const Observacion = ({
 }) => {
   const { refetch } = useProjectQuery();
   const [showEditDialog, setShowEditDialog] = useState(false);
-  // const [
-  //   eliminarObjetivo,
-  //   {
-  //     data: dataMutationEliminar,
-  //     loading: loadingEliminar,
-  //     error: errorEliminar,
-  //   },
-  // ] = useMutation(ELIMINAR_OBJETIVO, {
-  //   refetchQueries: [{ query: PROYECTOS }],
-  // });
+  const [
+    eliminarObservacion,
+    {
+      data: dataMutationEliminar,
+      loading: loadingEliminar,
+      error: errorEliminar,
+    },
+  ] = useMutation(ELIMINAROBSERVACION, {
+    refetchQueries: [{ query: GET_AVANCES }],
+  });
 
-  // useEffect(() => {
-  //   if (dataMutationEliminar) {
-  //     if (dataMutationEliminar.eliminarObjetivo) {
-  //       if (dataMutationEliminar.eliminarObjetivo.errors) {
-  //         if (dataMutationEliminar.eliminarObjetivo.errors[0]) {
-  //           toast.error(
-  //             dataMutationEliminar.eliminarObjetivo.errors[0].message
-  //           );
-  //         }
-  //       }
-  //     }
-  //   }
-  //   if (errorEliminar) {
-  //     toast.error('Error al eliminar el objetivo');
-  //   }
-  //   if (dataMutationEliminar) {
-  //     console.log('iiiii');
-  //     if (dataMutationEliminar.eliminarObjetivo) {
-  //       console.log('eee');
+  useEffect(() => {
+    if (dataMutationEliminar) {
+      if (dataMutationEliminar.eliminarObservacion) {
+        if (dataMutationEliminar.eliminarObservacion.errors) {
+          if (dataMutationEliminar.eliminarObservacion.errors[0]) {
+            toast.error(
+              dataMutationEliminar.eliminarObservacion.errors[0].message
+            );
+          }
+        }
+      }
+    }
+    if (errorEliminar) {
+      toast.error('Error al eliminar el objetivo');
+    }
+    if (dataMutationEliminar) {
+      console.log('iiiii');
+      if (dataMutationEliminar.eliminarObservacion) {
+        console.log('eee');
 
-  //       if (dataMutationEliminar.eliminarObjetivo.success) {
-  //         // refetch();
-  //         toast.success('Objetivo eliminado');
-  //       }
-  //     }
-  //   }
-  // }, [dataMutationEliminar, errorEliminar, refetch]);
+        if (dataMutationEliminar.eliminarObservacion.success) {
+          // refetch();
+          toast.success('Observacion eliminada');
+        }
+      }
+    }
+  }, [dataMutationEliminar, errorEliminar, refetch]);
 
-  // const ejecutarEliminacion = () => {
-  //   eliminarObjetivo({ variables: { idProyecto, idObjetivo: _id } });
-  //   console.log(dataMutationEliminar);
-  // };
+  const ejecutarEliminacion = () => {
+    eliminarObservacion({ variables: { idAvance, idOb: _id } });
+  };
 
-  // if (loadingEliminar)
-  //   return (
-  //     <ReactLoading
-  //       data-testid="loading-in-button"
-  //       type="spin"
-  //       height={100}
-  //       width={100}
-  //     />
-  //   );
+  if (loadingEliminar)
+    return (
+      <ReactLoading
+        data-testid="loading-in-button"
+        type="spin"
+        height={100}
+        width={100}
+      />
+    );
   return (
     <div className="mx-5 my-4 bg-slate-200 p-8 rounded-lg flex flex-col  items-center justify-center shadow-xl">
       <div className="text-lg font-bold">{idObservacion}</div>
       <div>{descripcion}</div>
-      <PrivateComponent roleList={['ESTUDIANTE','LIDER']}>
+      <PrivateComponent roleList={['LIDER']}>
         <div>
           <i
             onClick={() => {
@@ -1084,10 +1083,10 @@ const Observacion = ({
             }}
             className="fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer"
           />
-          {/* <i
+          <i
             onClick={ejecutarEliminacion}
             className="fas fa-trash mx-2 text-red-500 hover:text-red-200 cursor-pointer"
-          /> */}
+          />
         </div>
         <Dialog open={showEditDialog} onClose={() => setShowEditDialog(false)}>
           <EditarObservacion

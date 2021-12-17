@@ -19,6 +19,11 @@ const IndexInscripciones = () => {
   useEffect(() => {
     console.log(data);
   }, [data]);
+
+useEffect(() => {
+  console.log("data",data)
+}, [])
+
   if (loading) return <Loading />;
   return (
     <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>

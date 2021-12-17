@@ -101,16 +101,31 @@ const EDITAROBSERVACION = gql`
   }
 `;
 
-// const EDITAR_AVANCE = gql`
-
-// `;
+const ELIMINAROBSERVACION = gql`
+  mutation EliminarObservacion($idAvance: String!, $idOb: String!) {
+    eliminarObservacion(idAvance: $idAvance, idOb: $idOb) {
+      succes
+      errors {
+        path
+        message
+      }
+      avance {
+        observaciones {
+          _id
+          descripcion
+        }
+        _id
+      }
+    }
+  }
+`;
 // const EDITAR_AVANCE = gql`
 
 // `;
 
 
 export {
-CREAR_AVANCE, EDITAR_AVANCE, CREAROBSERVACION, EDITAROBSERVACION
+CREAR_AVANCE, EDITAR_AVANCE, CREAROBSERVACION, EDITAROBSERVACION, ELIMINAROBSERVACION
 };
 
 //
