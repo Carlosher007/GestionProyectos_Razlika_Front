@@ -78,26 +78,31 @@ const LDActualizarProyecto = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (formData.fechaFin === '') {
-      console.log(true)
-      formData.fechaFin = queryData.Proyecto.proyecto.fechaFin;
+    if (queryData.Proyecto.proyecto.estado === 'INACTIVO') {
+      e.preventDefault();
+      toast.error('No puede moficiarlo pues el estado esta en inactivo');
+    } else {
+      e.preventDefault();
+      if (formData.fechaFin === '') {
+        console.log(true);
+        formData.fechaFin = queryData.Proyecto.proyecto.fechaFin;
+      }
+      if (formData.fechaInicio === '') {
+        console.log(true);
+        formData.fechaInicio = queryData.Proyecto.proyecto.fechaInicio;
+      }
 
+      formData.presupuesto = parseFloat(formData.presupuesto);
+
+      editarProyecto({
+        variables: {
+          _id,
+          campos: formData,
+        },
+      });
+      console.log(mutationData);
+      console.log(formData);
     }
-    if (formData.fechaInicio === '') {
-      console.log(true)
-      formData.fechaInicio = queryData.Proyecto.proyecto.fechaInicio;
-    }
-
-    formData.presupuesto = parseFloat(formData.presupuesto);
-
-    editarProyecto({
-      variables: {
-        _id,
-        campos: formData,
-      },
-    });
-    console.log(mutationData);
-    console.log(formData);
   };
 
   if (queryLoading) return <Loading />;
@@ -142,34 +147,6 @@ const LDActualizarProyecto = () => {
               name="presupuesto"
               defaultValue={queryData.Proyecto.proyecto.presupuesto}
               // required={true}
-            />
-            <Input
-              label="Fecha Inicio"
-              type="date"
-              name="fechaInicio"
-              defaultValue={queryData.Proyecto.proyecto.fechaInicio}
-              // required={true}
-            />
-            <Input
-              label="Fecha Fin:"
-              type="date"
-              name="fechaFin"
-              defaultValue={queryData.Proyecto.proyecto.fechaFin}
-              // required={true}
-            />
-            <DropDown
-              label="Estado:"
-              name="estado"
-              defaultValue={queryData.Proyecto.proyecto.estado}
-              // required={true}
-              options={Enum_EstadoProyecto}
-            />
-            <DropDown
-              label="Fase:"
-              name="fase"
-              defaultValue={queryData.Proyecto.proyecto.fase}
-              // required={true}
-              options={Enum_FaseProyecto}
             />
             <ButtonLoading
               disabled={Object.keys(formData).length === 0}

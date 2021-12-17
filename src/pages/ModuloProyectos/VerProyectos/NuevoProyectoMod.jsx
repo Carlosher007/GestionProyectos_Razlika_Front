@@ -88,7 +88,7 @@ if (loading) return <Loading/>;
   return (
     <PrivateRoute roleList={['LIDER']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Nuevo Proyecto" />
       </div>
       <div className="bodyBackgroundWhite">
         <div className="p-10 flex flex-col items-center">

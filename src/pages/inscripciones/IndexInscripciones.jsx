@@ -28,7 +28,7 @@ useEffect(() => {
   return (
     <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Inscripciones" />
       </div>
       <div className="p-10">
         <div>Pagina de inscripciones</div>

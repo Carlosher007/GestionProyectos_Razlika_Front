@@ -46,11 +46,11 @@ const VerProyectosEstd = () => {
   }, [queryData, error]);
 
   if (loading) return <Loading />;
-//
+  //
   return (
     <PrivateRoute roleList={['ESTUDIANTE']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Ver Proyectos" />
       </div>
       <div style={{ background: '#313131' }}>
         <Link to="/proyecto">
@@ -100,19 +100,18 @@ const Card = ({ proyecto }) => {
   var objetivos = 0;
   var avances = 0;
 
-useEffect(() => {
-  if (userData && proyecto.inscripciones) {
-    const flt = proyecto.inscripciones.filter(
-      // (el) => el.estudiante._id === userData._id
-      (el) => el.estudiante._id
-      // (el) => console.log(el._id)
-    );
-    if (flt.length > 0) {
-      setEstadoInscripcion(flt[0].estado);
+  useEffect(() => {
+    if (userData && proyecto.inscripciones) {
+      const flt = proyecto.inscripciones.filter(
+        // (el) => el.estudiante._id === userData._id
+        (el) => el.estudiante._id && el.estado === 'ACEPTADO'
+        // (el) => console.log(el._id)
+      );
+      if (flt.length > 0) {
+        setEstadoInscripcion(flt[0].estado);
+      }
     }
-  }
-}, [userData, proyecto]);
-
+  }, [userData, proyecto]);
 
   let more = document.querySelectorAll('.more');
   for (let i = 0; i < more.length; i++) {

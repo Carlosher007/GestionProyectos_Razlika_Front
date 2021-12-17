@@ -5,6 +5,8 @@ import { PROYECTOS } from 'graphql/proyectos/queries';
 import DropDown from 'components/Dropdown';
 import { Dialog } from '@mui/material';
 import { Enum_EstadoProyecto } from 'utils/enums';
+import { Enum_FaseProyecto } from 'utils/enums';
+
 import ButtonLoading from 'components/ButtonLoading';
 import useFormData from 'hooks/useFormData';
 import { EDITAR_PROYECTO } from 'graphql/proyectos/mutations';
@@ -49,7 +51,7 @@ const VerProyectos = () => {
   return (
     <PrivateRoute roleList={['ADMINISTRADOR']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Ver Proyectos" />
       </div>
       <div style={{ background: '#313131' }}>
         <Link to="/proyecto">
@@ -91,6 +93,7 @@ const VerProyectos = () => {
 const Card = ({ proyecto }) => {
   const [estado, setEstado] = useState('card');
   const [showDialog, setShowDialog] = useState(false);
+  const [showDialog3, setShowDialog3] = useState(false);
 
   var inscripciones = 0;
   var objetivos = 0;
@@ -139,7 +142,7 @@ const Card = ({ proyecto }) => {
           {<img src={Imagenes[21].img} alt="Imagen Proyecto" />}
         </div>
         <div className="content">
-          <PrivateComponent roleList={['LIDER']}>
+          {/* <PrivateComponent roleList={['LIDER']}>
             {userData._id === proyecto.lider._id && (
               <i
                 className="mx-4 fas fa-pen text-white hover:text-blue-400"
@@ -148,6 +151,22 @@ const Card = ({ proyecto }) => {
                 }}
               />
             )}
+          </PrivateComponent> */}
+          <PrivateComponent roleList={['ADMINISTRADOR']}>
+            <i
+              className="mx-4 fas fa-pen text-blue-800 hover:text-blue-400"
+              onClick={() => {
+                setShowDialog(true);
+              }}
+            />
+          </PrivateComponent>
+          <PrivateComponent roleList={['ADMINISTRADOR']}>
+            <i
+              className="mx-4 fas fa-pen text-red-800 hover:text-red-400"
+              onClick={() => {
+                setShowDialog3(true);
+              }}
+            />
           </PrivateComponent>
           <h3>Proyecto: {proyecto.nombre}</h3>
           <h3>Estado: {capitalize(proyecto.estado)}</h3>
@@ -232,9 +251,74 @@ const Card = ({ proyecto }) => {
       >
         <FormEditProyecto _id={proyecto._id} />
       </Dialog>
+      <Dialog
+        open={showDialog3}
+        onClose={() => {
+          setShowDialog3(false);
+        }}
+      >
+        <FormEditFase _id={proyecto._id} />
+      </Dialog>
     </>
     //   </div>
     // </div>
+  );
+};
+
+const FormEditFase = ({ _id }) => {
+  const { form, formData, updateFormData } = useFormData();
+  const [editarProyecto, { data: dataMutation, loading, error }] =
+    useMutation(EDITAR_PROYECTO);
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    editarProyecto({
+      variables: {
+        _id,
+        campos: formData,
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (dataMutation) {
+      if (dataMutation.editarProyecto) {
+        if (dataMutation.editarProyecto.errors) {
+          if (dataMutation.editarProyecto.errors[0]) {
+            toast.error(dataMutation.editarProyecto.errors[0].message);
+          }
+        }
+      }
+    }
+    if (error) {
+      toast.error('Error editando el proyecto');
+    }
+    if (dataMutation) {
+      if (dataMutation.editarProyecto) {
+        if (dataMutation.editarProyecto.proyecto) {
+          toast.success('Proyecto editado');
+        }
+      }
+    }
+  }, [dataMutation, error]);
+
+  return (
+    <div className="p-4">
+      <h1 className="font-bold">Modificar Estado del Proyecto</h1>
+      <form
+        ref={form}
+        onChange={updateFormData}
+        onSubmit={submitForm}
+        className="flex flex-col items-center"
+      >
+        <DropDown
+          label="Fase del Proyecto"
+          name="fase"
+          options={Enum_FaseProyecto}
+        />
+        <ButtonLoading disabled={false} loading={loading} text="Confirmar" />
+      </form>
+    </div>
   );
 };
 

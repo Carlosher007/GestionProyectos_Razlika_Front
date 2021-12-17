@@ -104,7 +104,7 @@ const GestionPerfil = () => {
   return (
     <PrivateRoute roleList={['LIDER', 'ADMINISTRADOR', 'ESTUDIANTE']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Gestion perfil" />
       </div>
       <div className="bodyBackgroundWhite">
         <div className="p-4">

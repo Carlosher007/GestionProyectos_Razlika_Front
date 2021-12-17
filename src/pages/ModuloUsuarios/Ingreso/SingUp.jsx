@@ -30,13 +30,15 @@ function SingUp() {
   useEffect(() => {
     if (dataMutation) {
       if (dataMutation.registro.errors) {
-        toast.error(dataMutation.registro.errors[0].message);
+        if(dataMutation.registro.errors[0]){
+          toast.error(dataMutation.registro.errors[0].message);
+        }
       }
     }
     if (dataMutation) {
       if (dataMutation.registro.token) {
         setToken(dataMutation.registro.token);
-        navigate('/');
+        toast.success("Te has registrado, acutalmente estas en estado Pendiente, así que debes esperar");
       }
     }
   }, [dataMutation, setToken, navigate]);

@@ -49,7 +49,7 @@ const MiPerfil = () => {
   return (
     <PrivateRoute roleList={['LIDER', 'ADMINISTRADOR', 'ESTUDIANTE']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Mi Perfil" />
       </div>
       <div style={{background: "#313131"}}>
         <Link to="/usuarios">

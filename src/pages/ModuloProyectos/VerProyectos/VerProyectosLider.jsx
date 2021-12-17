@@ -50,7 +50,7 @@ const VerProyectosLider = () => {
   return (
     <PrivateRoute roleList={['LIDER']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Ver mis proyectos" />
       </div>
       <div style={{ background: '#313131' }}>
         <Link to="/proyecto">

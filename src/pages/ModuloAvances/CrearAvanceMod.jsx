@@ -44,7 +44,7 @@ const CrearAvanceMod = () => {
           if (dataProyecto.ProyectosBasico.proyecto) {
             const lu = {};
             dataProyecto.ProyectosBasico.proyecto.forEach((elemento) => {
-              lu[elemento._id] = elemento.nombre;
+              lu[elemento._id] = elemento.nombre ;
             });
             setListaProyectos(lu);
           }
@@ -92,7 +92,7 @@ const CrearAvanceMod = () => {
   return (
     <PrivateRoute roleList={['ESTUDIANTE']}>
       <div class="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Crear Avance" />
       </div>
       <div className="bodyBackgroundWhite">
         <div className="p-10 flex flex-col items-center">
@@ -114,7 +114,7 @@ const CrearAvanceMod = () => {
               name="proyecto"
               required={true}
             />
-            <Observaciones />
+            {/* <Observaciones /> */}
             <ButtonLoading
               text="Crear Proyecto"
               loading={false}

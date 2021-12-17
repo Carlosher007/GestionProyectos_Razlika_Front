@@ -7,7 +7,7 @@ const Loading = () => {
   return (
     <>
       <div className="divNav">
-        <Nav titulo="Pagina Inicio" />
+        <Nav titulo="Loading" />
       </div>
       <div className="contLoading">
         <div className="bodyLoading">

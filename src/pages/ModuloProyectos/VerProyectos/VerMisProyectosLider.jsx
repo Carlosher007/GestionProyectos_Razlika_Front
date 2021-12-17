@@ -65,7 +65,7 @@ const VerProyectosMisProyectosLider = () => {
     <ProjectQueryContext.Provider value={{ queryData, refetch }}>
       <PrivateRoute roleList={['LIDER']}>
         <div class="divNav">
-          <Nav titulo="Pagina Inicio" />
+          <Nav titulo="Ver mis Proyectos" />
         </div>
         <div style={{ background: '#313131' }}>
           <Link to="/proyecto">
@@ -110,6 +110,7 @@ const Card = ({ proyecto }) => {
   const [estado, setEstado] = useState('card');
   const [showDialog, setShowDialog] = useState(false);
   const [showDialog2, setShowDialog2] = useState(false);
+
   var inscripciones = 0;
   var objetivos = 0;
   var avances = 0;
@@ -169,14 +170,14 @@ const Card = ({ proyecto }) => {
           {<img src={Imagenes[21].img} alt="Imagen Proyecto" />}
         </div>
         <div className="content">
-          <PrivateComponent roleList={['LIDER']}>
+          {/* <PrivateComponent roleList={['LIDER']}>
             <i
               className="mx-4 fas fa-pen text-white hover:text-blue-400"
               onClick={() => {
                 setShowDialog(true);
               }}
             />
-          </PrivateComponent>
+          </PrivateComponent> */}
           <h3>Proyecto: {proyecto.nombre}</h3>
           <h3>Estado: {capitalize(proyecto.estado)}</h3>
           <div>
