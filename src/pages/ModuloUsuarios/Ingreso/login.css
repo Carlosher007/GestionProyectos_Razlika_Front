@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+.body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.active {
+  background: #3e3f39;
+}
+
+.sectionLogin {
+  position: relative;
+  min-height: 100vh;
+  background: #557085;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+.sectionRegistro {
+  position: relative;
+  min-height: 100vh;
+  background: #70373e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: 0.5s;
+}
+
+
+section .container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+section .container2 {
+  position: relative;
+  width: 1100px;
+  height: 600px;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+section .container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+section .container .user .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  transition: 0.5;
+}
+
+section .container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+Input{
+  font-size: 1px;
+}
+
+section .container .user .formBx Input {
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 8px;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+section .container .user .formBx input {
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 14px;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+section .container .user .formBx ButtonLoading {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx input[type='submit'] {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx Input[type='submit'] {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+section .container .user.signupBx .formBx input[type='submit'] {
+  background: #e73e49;
+}
+
+section .container .user.signupBx ButtonLoading {
+  background: #e73e49;
+}
+
+section .container .user.signupBx .formBx Input[type='submit'] {
+  background: #e73e49;
+}
+
+section .container .user .formBx .signup {
+  position: relative;
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+section .container .user .formBx .signup a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #577eff;
+}
+
+section .container .signupBx {
+  pointer-events: none;
+}
+
+section .container.active .signupBx {
+  pointer-events: initial;
+}
+
+section .container .signupBx .formBx {
+  top: 100%;
+}
+
+section .container.active .signupBx .formBx {
+  top: 0;
+}
+
+section .container .signupBx .imgBx {
+  top: -100%;
+  transition: 0.5s;
+}
+section .container.active .signupBx .imgBx {
+  top: 0;
+}
+
+section .container .signinBx .formBx {
+  top: 0;
+}
+section .container.active .signinBx .formBx {
+  top: 100%;
+}
+
+section .container .signinBx .imgBx {
+  top: 0;
+  transition: 0.5s;
+}
+section .container.active .signinBx .imgBx {
+  top: -100%;
+}
+
+@media (max-width: 991px) {
+  section .container {
+    max-width: 400px;
+  }
+  section .container .imgBx {
+    display: none;
+  }
+  section .container .use .formBx {
+    width: 100%;
+  }
+  section .container.active .signinBx .formBx {
+    top: -100%;
+  }
+}
+
+section .container .user .formBx .move {
+  max-width: 110px;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+  border: none;
+}
+
+.containerButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.my-form select {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+
+select {
+  appearance: none;
+}
+
+/* Remove native arrow on IE */
+select::-ms-expand {
+  display: none;
+}
+
+/*Remove dotted outline from selected option on Firefox*/
+/*https://stackoverflow.com/questions/3773430/remove-outline-from-select-box-in-ff/18853002#18853002*/
+/*We use !important to override the color set for the select on line 99*/
+select:-moz-focusring {
+  color: transparent !important;
+  text-shadow: 0 0 0 var(--white);
+}
+
+section .container .user .formBx select {
+  width: 100%;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+section .container .user .formBx select {
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 14px;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+section .container .user .formBx select:focus {
+  transform: scale(1.02);
+}
+
+section .container .user .formBx select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+section .container .user .formBx select {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+
+section .container .user .formBx *:required {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+section .container .user .formBx *:required {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);
+}
+
+/*
+/* CAMPOS OBLIGATORIOS */
+
+/* .formBx .grid > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+  .formBx .grid {
+    display: grid;
+    grid-gap: 1.5rem;
+  }
+
+  .formBx .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formBx .grid-3 {
+    grid-template-columns: auto auto auto;
+    align-items: center;
+  }
+
+  .formBx .grid > *:not(:last-child) {
+    margin-bottom: 0; */
+/* } */
+
+.Lado{
+  display: flex;
+  justify-content: space-around;
+}
+.subLado{
+  margin: 0px 5px 0px 5px;
+}
+.ButtonLoadingP{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

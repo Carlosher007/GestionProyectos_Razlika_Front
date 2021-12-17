@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input {
+  @apply p-2 border border-indigo-200 focus:outline-none focus:border-indigo-800 rounded-md shadow-sm;
+}
+
+.bodyBackgroundDark{
+  background: #313131;
+  min-height: 100vh;
+}
+
+.bodyBackgroundWhite{
+  background:#F8EDEB;
+  min-height: 100vh;
+}
+
+.flex-objetivos-pl{
+  display: flex;
+  flex-direction: column;
+}
+.toastContainerZIndex{
+  z-index: 10000000000000000000000000;
+}
