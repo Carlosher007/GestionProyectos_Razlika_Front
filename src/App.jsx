@@ -52,7 +52,8 @@ import VerProyectosEstd from 'pages/ModuloProyectos/VerProyectos/VerProyectosEst
 import CrearAvanceMod from 'pages/ModuloAvances/CrearAvanceMod';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  // uri: 'http://localhost:4000/graphql',
+  uri: 'https://gestionproyect.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
