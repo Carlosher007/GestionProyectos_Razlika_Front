@@ -45,7 +45,7 @@ function Nav(props) {
   };
   return (
     <>
-    <MediaQuery query="(min-device-width: 500px)">
+    <MediaQuery query="(min-device-width: 800px)">
       <Navbar2>
         {/* <div> */}
         <div className="NavbarCont">
@@ -85,7 +85,7 @@ function Nav(props) {
         </div>
       </Navbar2>
     </MediaQuery>
-    <MediaQuery query="(max-device-width: 499px)">
+    <MediaQuery query="(max-device-width: 799px)">
       <Navbar2>
         <div>
           <NavLink to="/">
