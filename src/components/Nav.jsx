@@ -29,7 +29,7 @@ import { ReactComponent as ArrowIcon } from '../icons/arrow.svg';
 import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { useUser } from 'context/userContext';
-
+import MediaQuery from 'react-responsive';
 /*
   INSTALAR:
   npm install react-transition-group
@@ -44,44 +44,67 @@ function Nav(props) {
     }
   };
   return (
-    <Navbar2>
-      {/* <div> */}
-      <div className="NavbarCont">
-        <p className="title">{props.titulo}</p>
-      </div>
-      <div>
-        <NavLink to="/">
-          <NavItem icon={<Inicio />} />
-        </NavLink>
-      </div>
-
-      <div>
-        <NavItem icon={<Menu />}>
-          <DropdownMenu></DropdownMenu>
-        </NavItem>
-      </div>
-      {/* </div> */}
-
-      <div>
-        <Logout />
-      </div>
-      <div className="datosUserNav">
-        <div>
-          {userData.foto ? (
-            <img
-              style={{ height: '60px', marginRight: '70px' }}
-              className=" datosUserNavInto rounded-full"
-              src={userData.foto}
-              alt="Foto"
-            />
-          ) : (
-            <></>
-          )}
+    <>
+    <MediaQuery query="(min-device-width: 500px)">
+      <Navbar2>
+        {/* <div> */}
+        <div className="NavbarCont">
+          <p className="title">{props.titulo}</p>
         </div>
-        <div className="datosUserNavInto">{userData.nombre}:</div>
-        <div className="datosUserNavInto">{capitalize(userData.rol)}</div>
-      </div>
-    </Navbar2>
+        <div>
+          <NavLink to="/">
+            <NavItem icon={<Inicio />} />
+          </NavLink>
+        </div>
+
+        <div>
+          <NavItem icon={<Menu />}>
+            <DropdownMenu></DropdownMenu>
+          </NavItem>
+        </div>
+        {/* </div> */}
+
+        <div>
+          <Logout />
+        </div>
+        <div className="datosUserNav">
+          <div>
+            {userData.foto ? (
+              <img
+                style={{ height: '60px', marginRight: '70px' }}
+                className=" datosUserNavInto rounded-full"
+                src={userData.foto}
+                alt="Foto"
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="datosUserNavInto">{userData.nombre}:</div>
+          <div className="datosUserNavInto">{capitalize(userData.rol)}</div>
+        </div>
+      </Navbar2>
+    </MediaQuery>
+    <MediaQuery query="(max-device-width: 499px)">
+      <Navbar2>
+        <div>
+          <NavLink to="/">
+            <NavItem icon={<Inicio />} />
+          </NavLink>
+        </div>
+
+        <div>
+          <NavItem icon={<Menu />}>
+            <DropdownMenu></DropdownMenu>
+          </NavItem>
+        </div>
+        {/* </div> */}
+        <div>
+          <Logout />
+        </div>
+      </Navbar2>
+    </MediaQuery>
+  </>
   );
 }
 
